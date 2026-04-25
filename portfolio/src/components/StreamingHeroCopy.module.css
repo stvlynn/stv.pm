@@ -1,0 +1,95 @@
+.scroller {
+  position: relative;
+  max-width: 92%;
+  height: min(56svh, 36rem);
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scrollbar-width: none;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.markdown {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.markdown p {
+  margin: 0;
+}
+
+.markdown em {
+  padding-right: 0.1em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.markdown strong {
+  font-weight: 700;
+}
+
+.markdown code {
+  display: inline-block;
+  padding: 0 0.16em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.78em;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 42%, transparent);
+  border-radius: 0.12em;
+  transform: translateY(-0.04em);
+}
+
+.hook {
+  position: relative;
+  display: inline;
+  padding: 0 0.03em;
+  font: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  color: inherit;
+  vertical-align: baseline;
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 100% 0.08em no-repeat,
+    color-mix(in srgb, var(--accent) 13%, transparent);
+  border: 0;
+  border-radius: 0.08em;
+  cursor: default;
+  opacity: 1;
+  transition:
+    background-color 0.42s cubic-bezier(0.19, 1, 0.22, 1),
+    color 0.42s cubic-bezier(0.19, 1, 0.22, 1),
+    filter 0.42s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hook:disabled {
+  color: inherit;
+}
+
+.hookReady {
+  cursor: pointer;
+  filter: drop-shadow(0 0.08em 0 color-mix(in srgb, var(--accent) 28%, transparent));
+}
+
+.hookReady:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .scroller {
+    max-width: 100%;
+    height: min(52svh, 28rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroller {
+    scroll-behavior: auto;
+  }
+}

@@ -1,6 +1,6 @@
 # STV.PM
 
-Steven Lynn's personal homepage, built as a Vite + React portfolio site. The page combines a full-screen personal intro, open-source project highlights, an Unsplash photography reel, AI tool experiments, and social/contact links.
+Steven Lynn's personal homepage, built as a Vite + React portfolio site. The page combines a full-screen personal intro, open-source project highlights, work experience, an Unsplash photography reel, and social/contact links.
 
 ## Overview
 
@@ -9,11 +9,13 @@ This site presents Steven Lynn as an AI explorer, open-source builder, and amate
 ## Features
 
 - Full-screen hero section with responsive text and artwork.
+- Streaming XMarkdown hero copy with an animated hook-word click.
+- Free cursor guide overlay inspired by software cursor rendering, with keyword framing and section-aware re-entry.
 - Low-saturation image treatment with slow non-linear hover transitions.
 - Open-source project grid linking to Steven's GitHub repositories.
 - Personal operating-system section describing Steven's AI/product focus.
+- Work experience section with LobeHub company icons and a LinkedIn CTA.
 - Auto-scrolling Unsplash photography reel with reduced-motion support.
-- AI tools and experiments section for plugins and model work.
 - Footer with email, GitHub, X, blog, Telegram, and LinkedIn links.
 - Optimized hero imagery with WebP and JPEG fallback.
 
@@ -23,6 +25,8 @@ This site presents Steven Lynn as an AI explorer, open-source builder, and amate
 - TypeScript
 - Vite
 - CSS Modules
+- Ant Design XMarkdown
+- LobeHub Icons
 - ESLint
 
 ## Project Structure
@@ -38,14 +42,18 @@ This site presents Steven Lynn as an AI explorer, open-source builder, and amate
     │       └── hero-lynn.webp
     ├── src/
     │   ├── components/
+    │   │   ├── FreeCursorGuide.tsx
     │   │   ├── Hero.tsx
     │   │   ├── InfoTable.tsx
     │   │   ├── PhotographyReel.tsx
     │   │   ├── ProjectCard.tsx
     │   │   ├── ProjectGrid.tsx
     │   │   ├── SectionHeader.tsx
-    │   │   └── SiteFooter.tsx
+    │   │   ├── SiteFooter.tsx
+    │   │   └── WorkExperience.tsx
     │   ├── data/
+    │   │   ├── cursorGuide.ts
+    │   │   ├── experience.ts
     │   │   ├── photography.ts
     │   │   └── projects.ts
     │   ├── App.tsx
@@ -108,6 +116,7 @@ The homepage copy and links are based on Steven Lynn's public profiles:
 - X: [https://x.com/stv_lynn](https://x.com/stv_lynn)
 - Blog: [https://blog.stv.pm](https://blog.stv.pm)
 - Hugging Face: [https://huggingface.co/stvlynn](https://huggingface.co/stvlynn)
+- LinkedIn: [https://www.linkedin.com/in/hongyiling/](https://www.linkedin.com/in/hongyiling/)
 - Unsplash: [https://unsplash.com/@stvlynn](https://unsplash.com/@stvlynn)
 
 Photography images in the reel link back to Steven's public Unsplash photo pages. The section uses Unsplash-hosted image URLs with size and quality parameters for reasonable page weight.

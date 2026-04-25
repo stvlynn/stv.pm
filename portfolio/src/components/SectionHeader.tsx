@@ -17,7 +17,7 @@ export function SectionHeader({
     : styles.header;
 
   return (
-    <h2 id={id} className={className}>
+    <h2 id={id} className={className} data-cursor-target={id}>
       {children}
     </h2>
   );

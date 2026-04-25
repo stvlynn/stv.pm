@@ -1,4 +1,5 @@
 import styles from './Hero.module.css';
+import { StreamingHeroCopy } from './StreamingHeroCopy';
 
 const HERO_IMAGE = '/images/hero-lynn.jpg';
 const HERO_IMAGE_WEBP = '/images/hero-lynn.webp';
@@ -15,13 +16,7 @@ export function Hero() {
   return (
     <div className={`grid-system ${styles.heroGrid}`}>
       <section className={`grid-item ${styles.statement}`}>
-        <p>
-          <b>Steven Lynn</b> is an <i>AI explorer</i> at FirstLab, host of
-          CrazyStaur.day, and builder of open-source tools for <b>agents</b>,
-          Dify workflows, language learning, and <i>search-first personal
-          navigation</i>. He ships small, practical systems that turn AI
-          experiments into <b>useful products</b>.
-        </p>
+        <StreamingHeroCopy />
         <div className={styles.sub}>Current Focus ➞ Build Value Together With AI</div>
         <div className={styles.meta}>
           <span>140 public repos</span>
