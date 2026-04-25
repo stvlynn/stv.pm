@@ -1,0 +1,12 @@
+.header {
+  padding: 1.5rem 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+
+.noBorderTop {
+  border-top: none;
+}

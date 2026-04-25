@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+portfolio/node_modules/
+
+# Production builds
+dist/
+portfolio/dist/
+dist-ssr/
+portfolio/dist-ssr/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+*.local
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sw?
+
+# TypeScript and test artifacts
+*.tsbuildinfo
+coverage/

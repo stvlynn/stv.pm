@@ -1,0 +1,90 @@
+:root {
+  --bg: #f4ebd8;
+  --fg: #050505;
+  --line: #050505;
+  --accent: #8a2a2a;
+
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  --grid-gap: 1px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+::selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Shared utility: thin-bordered grid composed of cells separated by 1px lines. */
+.grid-system {
+  display: grid;
+  gap: var(--grid-gap);
+  background-color: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.grid-item {
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shared pill tag used in card metadata and inline pills. */
+.pill-tag {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.pill-tag--md {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}

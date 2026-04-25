@@ -1,0 +1,47 @@
+.footer {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--line);
+}
+
+.huge {
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.huge i {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .links {
+    text-align: left;
+  }
+}
