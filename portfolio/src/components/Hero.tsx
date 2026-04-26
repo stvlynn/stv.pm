@@ -8,6 +8,9 @@ const PROFILE_LINKS = [
   { label: 'GitHub', href: 'https://github.com/stvlynn' },
   { label: 'X / @stv_lynn', href: 'https://x.com/stv_lynn' },
   { label: 'Blog', href: 'https://blog.stv.pm' },
+  { label: "Steven's Diary", href: 'https://t.me/stv_diary' },
+  { label: 'FirstLab', href: 'https://discord.gg/PwZDHH4mv3' },
+  { label: 'Telegram', href: 'https://t.me/stvlynn' },
   { label: 'Hugging Face', href: 'https://huggingface.co/stvlynn' },
   { label: 'Email', href: 'mailto:i@stv.pm' },
 ];

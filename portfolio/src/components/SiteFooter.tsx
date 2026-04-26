@@ -10,6 +10,8 @@ const FOOTER_LINKS: FooterLink[] = [
   { label: 'GitHub / stvlynn', href: 'https://github.com/stvlynn' },
   { label: 'X / Stv_Lynn', href: 'https://twitter.com/Stv_Lynn' },
   { label: 'Blog / blog.stv.pm', href: 'https://blog.stv.pm' },
+  { label: "Diary / Steven's Diary", href: 'https://t.me/stv_diary' },
+  { label: 'Community / FirstLab', href: 'https://discord.gg/PwZDHH4mv3' },
   { label: 'Telegram / stvlynn', href: 'https://t.me/stvlynn' },
   { label: 'LinkedIn / hongyiling', href: 'https://www.linkedin.com/in/hongyiling' },
 ];

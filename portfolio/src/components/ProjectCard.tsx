@@ -1,11 +1,12 @@
+import { useEffect, useMemo, useState } from 'react';
 import styles from './ProjectCard.module.css';
 
 export type ProjectCardData = {
   title: string;
   description?: string;
   tag: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
   cta: string;
   href: string;
 };
@@ -13,6 +14,30 @@ export type ProjectCardData = {
 type ProjectCardProps = ProjectCardData & {
   variant?: 'default' | 'featured';
 };
+
+type GitHubRepoResponse = {
+  description: string | null;
+};
+
+function getGitHubRepoApiUrl(href: string) {
+  try {
+    const url = new URL(href);
+
+    if (url.hostname !== 'github.com') {
+      return null;
+    }
+
+    const [owner, repo] = url.pathname.split('/').filter(Boolean);
+
+    if (!owner || !repo) {
+      return null;
+    }
+
+    return `https://api.github.com/repos/${owner}/${repo}`;
+  } catch {
+    return null;
+  }
+}
 
 export function ProjectCard({
   title,
@@ -26,6 +51,9 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const isFeatured = variant === 'featured';
   const isExternal = href.startsWith('http');
+  const repoApiUrl = useMemo(() => getGitHubRepoApiUrl(href), [href]);
+  const [githubDescription, setGithubDescription] = useState<string | null>(null);
+  const displayDescription = githubDescription ?? description;
   const cardClassName = [
     'grid-item',
     styles.card,
@@ -33,6 +61,42 @@ export function ProjectCard({
   ]
     .filter(Boolean)
     .join(' ');
+
+  useEffect(() => {
+    if (isFeatured || !repoApiUrl) {
+      return;
+    }
+
+    const controller = new AbortController();
+
+    fetch(repoApiUrl, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+      },
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`GitHub API responded with ${response.status}`);
+        }
+
+        return response.json() as Promise<GitHubRepoResponse>;
+      })
+      .then((repo) => {
+        if (repo.description) {
+          setGithubDescription(repo.description);
+        }
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return;
+        }
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [isFeatured, repoApiUrl]);
 
   return (
     <a
@@ -44,22 +108,29 @@ export function ProjectCard({
       {isFeatured ? (
         <header className={styles.featuredInfo}>
           <h3>{title}</h3>
-          {description ? <p>{description}</p> : null}
+          {displayDescription ? <p>{displayDescription}</p> : null}
           <span className={`pill-tag ${styles.pill}`}>{tag}</span>
         </header>
       ) : (
         <div className={styles.metaTop}>
           <div className={styles.title}>{title}</div>
-          {description ? <div className={styles.desc}>{description}</div> : null}
-          <span className="pill-tag">{tag}</span>
+          {displayDescription ? <div className={styles.desc}>{displayDescription}</div> : null}
         </div>
       )}
 
-      <div className={styles.imgContainer}>
-        <img src={image} alt={imageAlt} className={styles.img} loading="lazy" />
-      </div>
+      {isFeatured && image ? (
+        <div className={styles.imgContainer}>
+          <img src={image} alt={imageAlt ?? title} className={styles.img} loading="lazy" />
+        </div>
+      ) : null}
 
-      <span className={styles.action}>{cta}</span>
+      {isFeatured ? (
+        <span className={styles.action}>{cta}</span>
+      ) : (
+        <span className={styles.pixelArrow} aria-hidden="true">
+          ↗
+        </span>
+      )}
     </a>
   );
 }
