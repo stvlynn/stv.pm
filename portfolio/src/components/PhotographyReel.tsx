@@ -37,7 +37,6 @@ export function PhotographyReel() {
               tabIndex={index >= PHOTO_WORKS.length ? -1 : undefined}
             >
               <img src={photo.image} alt={photo.title} loading="lazy" />
-              <span>{photo.title}</span>
             </a>
           ))}
         </div>

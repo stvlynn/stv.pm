@@ -10,3 +10,21 @@
 .noBorderTop {
   border-top: none;
 }
+
+.header#work {
+  display: flex;
+  min-height: clamp(9rem, 18vw, 15rem);
+  align-items: flex-end;
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4rem);
+  font-size: clamp(3.2rem, 8.8vw, 8rem);
+  line-height: 0.86;
+  letter-spacing: -0.07em;
+}
+
+@media (max-width: 768px) {
+  .header#work {
+    min-height: clamp(7rem, 28vw, 11rem);
+    padding: 1.5rem;
+    font-size: clamp(3rem, 15vw, 5.5rem);
+  }
+}

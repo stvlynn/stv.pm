@@ -10,7 +10,7 @@ import {
 import styles from './StreamingHeroCopy.module.css';
 
 const HERO_SENTENCES = [
-  '**Steven Lynn** is an *AI explorer* at FirstLab, host of CrazyStaur.day, and builder of open-source tools for **Dify** workflows, *language learning*, search-first personal navigation, and practical [**agents**](#hero-hook-0).',
+  '**Steven Lynn** is an *AI explorer* at FirstLab, host of [CrazySatur.day](https://crazysatur.day) and [buildX](https://github.com/build-build-build), and builder of open-source tools for **Dify** workflows, *language learning*, search-first personal navigation, and practical [**agents**](#hero-hook-0).',
   'He works where *product operations* meets **builder culture**: turning community feedback, `plugin` ideas, and messy `LLM` experiments into systems people can [**reuse**](#hero-hook-1).',
   'At **Dify.ai**, he learned how AI application builders ask for examples, templates, trust, and workflows that feel [*inspectable*](#hero-hook-2).',
   'At **Tencent Cloud**, he focuses on *product operations* for cloud and AI tooling, connecting `launches`, user stories, and adoption [**loops**](#hero-hook-3).',
@@ -127,7 +127,11 @@ export function StreamingHeroCopy() {
         );
       }
 
-      return <a href={href}>{children}</a>;
+      return (
+        <a href={href} rel="noreferrer" target={href?.startsWith('http') ? '_blank' : undefined}>
+          {children}
+        </a>
+      );
     },
     [activeSentenceIndex, isStreaming, streamNextSentence],
   );
