@@ -1,6 +1,6 @@
 import { FreeCursorGuide } from './components/FreeCursorGuide';
+import { FieldNotes } from './components/FieldNotes';
 import { Hero } from './components/Hero';
-import { InfoTable } from './components/InfoTable';
 import { PhotographyReel } from './components/PhotographyReel';
 import { ProjectGrid } from './components/ProjectGrid';
 import { SectionHeader } from './components/SectionHeader';
@@ -17,7 +17,7 @@ function App() {
         <SectionHeader id="work">Open Source Projects</SectionHeader>
         <ProjectGrid projects={SELECTED_WORKS} />
 
-        <InfoTable />
+        <FieldNotes />
 
         <SectionHeader id="experience" noBorderTop>
           Work Experience
