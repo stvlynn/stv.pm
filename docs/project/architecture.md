@@ -39,7 +39,7 @@ frontend/
   src/
     app/               FSD app layer: root layout, theme provider, global CSS, metadata
     pages/home/        the homepage composition
-    widgets/           intro, work, writing, photo-wall, elsewhere, site-header, site-footer
+    widgets/           intro, work, writing, photo-wall, elsewhere, sign-off, site-header, site-footer
     features/          toggle-theme
     entities/          post, photo (types = backend DTOs, plus pure helpers)
     shared/            config, i18n (all copy), lib, ui (motion, brand, signature, section)

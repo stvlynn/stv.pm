@@ -1,7 +1,7 @@
 /*
  * The signature writes itself: a feathered mask sweeps across each line in
- * reading order, then the heart pops in. Pure CSS so the artwork paints with
- * the HTML and never waits for hydration.
+ * reading order, then the heart pops in. The artwork is plain CSS + SVG in the
+ * HTML; `WriteOnView` only holds the animation until the signature is seen.
  */
 
 .wipe {
@@ -33,6 +33,12 @@
   animation:
     pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 1.85s forwards,
     beat 0.7s cubic-bezier(0.2, 0, 0, 1) 1;
+}
+
+/* Held, delays included, until `WriteOnView` sees the signature. */
+[data-writing='waiting'] .wipe,
+[data-writing='waiting'] .heart {
+  animation-play-state: paused;
 }
 
 @keyframes write {

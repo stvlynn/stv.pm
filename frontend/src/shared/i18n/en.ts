@@ -49,6 +49,9 @@ export const en = {
       unsplash: 'Unsplash'
     }
   },
+  signOff: {
+    label: 'Signed, Steven Lynn'
+  },
   theme: {
     toLight: 'Switch to light theme',
     toDark: 'Switch to dark theme'

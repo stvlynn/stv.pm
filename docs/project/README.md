@@ -10,11 +10,12 @@ This section describes the project at a high level: what it is, what it is not, 
 
 `stv.pm` is Steven Lynn's personal homepage. It is one page, in English:
 
-1. A handwritten signature that writes itself, and a one-line bio.
+1. Name and a one-line bio.
 2. **Work** — Tencent (product manager, now) and Dify (operations, before), each with a square logo.
 3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
 4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.
 5. **Elsewhere** — X, Telegram, GitHub, Unsplash.
+6. **Sign-off** — the handwritten signature closes the page where a call to action would sit. It writes itself once it scrolls into view.
 
 The blog (repository `stvlynn/NotionNext`, theme `navyink`) links back here from its header ("About") and footer, and both sites use the same Navy Ink design tokens.
 

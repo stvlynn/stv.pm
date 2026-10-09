@@ -5,6 +5,7 @@ import { Elsewhere } from '@/widgets/elsewhere'
 import { Intro } from '@/widgets/intro'
 import { PhotoWall } from '@/widgets/photo-wall'
 import { SiteFooter } from '@/widgets/site-footer'
+import { SignOff } from '@/widgets/sign-off'
 import { SiteHeader } from '@/widgets/site-header'
 import { Work } from '@/widgets/work'
 import { Writing } from '@/widgets/writing'
@@ -17,19 +18,20 @@ export interface HomePageProps {
 
 /**
  * One narrow reading column; the photo wall alone widens to give the
- * pictures room. Sections settle in one after another on first paint.
+ * pictures room. Sections settle in one after another on first paint, and
+ * the handwritten signature closes the page.
  */
 export function HomePage({ posts, photos, year }: HomePageProps) {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
       <main className="flex-1">
-        <div className="mx-auto w-full max-w-2xl space-y-16 px-5 pt-10 sm:px-6 sm:pt-16">
+        <div className="mx-auto w-full max-w-2xl space-y-16 px-5 pt-12 sm:px-6 sm:pt-24">
           <Intro />
-          <Reveal delay={0.55}>
+          <Reveal delay={0.3}>
             <Work />
           </Reveal>
-          <Reveal delay={0.65}>
+          <Reveal delay={0.4}>
             <Writing posts={posts} />
           </Reveal>
         </div>
@@ -40,6 +42,9 @@ export function HomePage({ posts, photos, year }: HomePageProps) {
           <Reveal>
             <Elsewhere />
           </Reveal>
+          <div className="mt-20">
+            <SignOff />
+          </div>
         </div>
       </main>
       <SiteFooter year={year} />
