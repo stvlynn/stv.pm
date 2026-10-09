@@ -1,17 +1,48 @@
 {
-  "name": "agentic-coding-template",
-  "version": "0.0.0",
+  "name": "stv.pm",
+  "version": "0.1.0",
   "private": true,
-  "description": "Language- and framework-agnostic template for agent-driven projects.",
+  "description": "Steven Lynn's personal homepage.",
+  "type": "module",
   "scripts": {
-    "check": "echo 'Replace with typecheck + lint + test commands'",
-    "test": "echo 'Replace with test runner command'",
-    "lint": "echo 'Replace with linter command'",
-    "format": "echo 'Replace with formatter command'",
-    "docs:check": "echo 'Replace with markdown link checker command'"
+    "dev": "next dev frontend",
+    "build": "next build frontend",
+    "start": "next start frontend",
+    "typecheck": "tsc -p frontend --noEmit",
+    "lint": "eslint --max-warnings 0 frontend backend",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm lint && pnpm test"
   },
   "engines": {
     "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@9.0.0",
+  "dependencies": {
+    "clsx": "2.1.1",
+    "geist": "1.7.2",
+    "lucide-react": "1.40.0",
+    "motion": "13.5.1",
+    "next": "16.3.8",
+    "next-themes": "0.4.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "simple-icons": "16.30.0",
+    "tailwind-merge": "3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22.19.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.3.8",
+    "postcss": "8.5.6",
+    "prettier": "3.6.2",
+    "prettier-plugin-tailwindcss": "0.7.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
 }

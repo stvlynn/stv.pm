@@ -1,46 +1,37 @@
 # Deployment
 
-> How the project is built and deployed.
-
 ## Deployment target
 
-- Hosting: `__HOSTING__`
-- CI/CD platform: `__CI_CD__`
-- Container registry: `__REGISTRY__`
+- Hosting: Vercel (native Next.js ISR). Any Node host that runs `next start` works the same way.
+- CI: GitHub Actions (`.github/workflows/ci.yml`) runs lint, format check, typecheck and tests on pushes and pull requests to `main`. It does not build, because a build needs the Unsplash key and network access.
+
+## Vercel project settings
+
+`frontend/vercel.json` sets the framework and runs install and build from the repository root, where the lockfile and `backend/` live (the same layout the NotionNext blog deploys with).
+
+| Setting | Value |
+|---------|-------|
+| Root Directory | `frontend` |
+| Include files outside the root directory | enabled |
+| Environment variables | `UNSPLASH_ACCESS_KEY` for Production and Preview |
+| Domain | `stv.pm` |
 
 ## Build
 
 ```sh
-__BUILD_COMMAND__
+pnpm build
 ```
 
-## Deploy
+The build renders the homepage once, so it needs `UNSPLASH_ACCESS_KEY` and network access to `blog.stv.pm` and `api.unsplash.com`.
 
-```sh
-__DEPLOY_COMMAND__
-```
+## Content freshness
 
-Deployment assets (Dockerfiles, Kubernetes manifests) live in [`deploy/`](../../deploy/README.md). They are placeholders and must be adjusted to the project's actual stack and hosting environment.
+The homepage is regenerated at most once an hour (`export const revalidate = 3600` in `frontend/app/page.tsx`). If the blog or Unsplash fails during a regeneration, the previous page keeps being served and the error is logged by the host.
 
-## Database migrations
+## Order of deploys
 
-- Run migrations as part of the deployment pipeline.
-- Back up production data before running destructive migrations.
-- Migrations should be idempotent and reversible when possible.
+The homepage depends on the blog's JSON Feed carrying `id` and `date_published` on each item. Deploy the NotionNext change that adds them before the first deploy of this site.
 
 ## Rollback
 
-- Keep the previous release available for quick rollback.
-- Document the rollback command and expected recovery time.
-
-## Health checks
-
-- Expose a `/health` endpoint.
-- Health checks should verify database connectivity and critical dependencies.
-- Do not include dependency details in the public health response that could aid attackers.
-
-## Monitoring
-
-- Collect logs with structured JSON.
-- Set up alerts for error rate, latency, and dependency failures.
-- Use correlation IDs to trace requests across services.
+Promote the previous deployment in Vercel. There is no state to migrate.

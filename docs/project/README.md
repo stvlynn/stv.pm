@@ -8,34 +8,30 @@ This section describes the project at a high level: what it is, what it is not, 
 
 ## Project overview
 
-This repository is an **agentic-coding template**. It is meant to be copied at the start of a new project so that coding agents can immediately understand the conventions and boundaries.
+`stv.pm` is Steven Lynn's personal homepage. It is one page, in English:
 
-Because it is a template, concrete technology choices are intentionally left as placeholders. When you copy this template, fill in:
+1. A handwritten signature that writes itself, and a one-line bio.
+2. **Work** — Tencent (product manager, now) and Dify (operations, before), each with a square logo.
+3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
+4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.
+5. **Elsewhere** — X, Telegram, GitHub, Unsplash.
 
-- Programming language and runtime version.
-- Frontend framework and state-management approach.
-- Backend framework and transport (HTTP, gRPC, events, CLI).
-- Database, cache, and message broker.
-- Hosting and deployment target.
+The blog (repository `stvlynn/NotionNext`, theme `navyink`) links back here from its header ("About") and footer, and both sites use the same Navy Ink design tokens.
+
+## Goals
+
+- Restrained, typographic layout after https://chloemaillot.fr: one narrow column, quiet section headings, content first.
+- Purposeful motion: entrance reveals, a gliding hover pill on lists, a thumbnail-to-viewer morph, a view-transition theme switch. Everything respects `prefers-reduced-motion`.
+- Content stays current without redeploying: the page regenerates hourly from the blog and Unsplash.
+
+## Non-goals
+
+- No CMS of its own. Posts belong to the blog, photos to Unsplash.
+- No client-side data fetching, analytics or tracking.
 
 ## Boundaries
-
-The template enforces two architectural boundaries:
 
 - **Frontend:** [Feature-Sliced Design (FSD)](../frontend/README.md).
 - **Backend:** [Domain-Driven Design (DDD) layered architecture](../backend/README.md).
 
-Anything that crosses both boundaries — for example, a shared type contract between frontend and backend — should be documented in [`architecture.md`](architecture.md).
-
-## What belongs here
-
-- Project goals and non-goals.
-- High-level architecture and module relationships.
-- Technology-stack decisions.
-- Cross-cutting concerns that touch both frontend and backend.
-
-## What does not belong here
-
-- Detailed layer rules (those live in [`frontend/`](../frontend/README.md) and [`backend/`](../backend/README.md)).
-- Operational procedures (those live in [`operations/`](../operations/README.md)).
-- Testing or code-review policy (those live in [`quality/`](../quality/README.md)).
+Anything that crosses both boundaries is documented in [`architecture.md`](architecture.md).

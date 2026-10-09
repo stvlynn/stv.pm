@@ -1,5 +1,12 @@
 # Testing
 
+## In this project
+
+- Runner: Vitest (`pnpm test`), config in `vitest.config.ts`. Tests sit next to the code as `*.test.ts`.
+- Covered: the `getHome` use case (ordering, limits, failure), the JSON Feed and Unsplash mappers (contract violations raise `UpstreamError`), environment configuration, and the photo URL and date helpers.
+- Adapters are tested by stubbing `fetch`; no test talks to the network.
+- UI is verified by running the production build against a local stub of both sources (see [`../operations/local-dev.md`](../operations/local-dev.md)) and checking light, dark, mobile and the photo viewer in a browser.
+
 ## Test pyramid
 
 1. **Unit tests** — fast, isolated tests for domain logic and pure functions.

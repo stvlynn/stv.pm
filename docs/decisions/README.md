@@ -13,6 +13,7 @@ Write an ADR when the decision:
 ## Existing decisions
 
 - [`adr-template.md`](adr-template.md) — template for new ADRs.
+- [`001-nextjs-isr-single-page.md`](001-nextjs-isr-single-page.md) — Next.js with ISR for a one-page site.
 
 ## Naming
 
