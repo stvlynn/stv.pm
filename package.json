@@ -13,7 +13,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "check": "pnpm typecheck && pnpm lint && pnpm test"
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "build:worker": "cd frontend && opennextjs-cloudflare build",
+    "deploy:worker": "cd frontend && opennextjs-cloudflare deploy",
+    "preview:worker": "cd frontend && opennextjs-cloudflare preview"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -32,6 +35,7 @@
     "tailwind-merge": "3.6.0"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.10",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "22.19.1",
     "@types/react": "19.2.7",
@@ -43,6 +47,7 @@
     "prettier-plugin-tailwindcss": "0.7.1",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.11",
+    "wrangler": "^4.149.0"
   }
 }

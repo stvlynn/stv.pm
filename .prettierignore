@@ -7,3 +7,7 @@ docs
 *.md
 frontend/src/shared/ui/signature/paths.ts
 frontend/app/icon.svg
+
+.open-next/
+.wrangler/
+.dev.vars*

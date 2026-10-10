@@ -85,4 +85,4 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 - Motion: `motion` 13; components adapted from beUI (https://beui.dev)
 - Icons: `lucide-react`, `simple-icons` (social), LobeHub marks (company logos)
 - Tests: Vitest
-- Hosting: Vercel (see [`../operations/deployment.md`](../operations/deployment.md))
+- Hosting: Cloudflare Workers with OpenNext (R2 ISR cache and Durable Object queue), or Vercel (see [`../operations/deployment.md`](../operations/deployment.md))

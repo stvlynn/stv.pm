@@ -87,7 +87,15 @@ const config = [
       ]
     }
   },
-  { ignores: ['**/.next/**', '**/node_modules/**', 'frontend/next-env.d.ts'] }
+  {
+    ignores: [
+      '**/.next/**',
+      '**/.open-next/**',
+      '**/.wrangler/**',
+      '**/node_modules/**',
+      'frontend/next-env.d.ts'
+    ]
+  }
 ]
 
 export default config
