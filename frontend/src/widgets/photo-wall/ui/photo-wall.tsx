@@ -50,7 +50,7 @@ export function PhotoWall({ photos, locale }: { photos: Photo[]; locale: Locale 
             <Reveal key={image.id} delay={(index % 3) * 0.06} className="mb-3 break-inside-avoid">
               <ImageViewerThumbnail
                 imageId={image.id}
-                className="group block w-full cursor-zoom-in rounded-xl"
+                className="group block w-full rounded-xl"
                 imageClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
               >
                 <span

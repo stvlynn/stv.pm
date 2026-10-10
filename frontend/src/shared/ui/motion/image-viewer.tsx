@@ -315,7 +315,7 @@ export function ImageViewerContent({ className, renderCaption }: ImageViewerCont
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: reduce ? 0.1 : 0.18, ease: EASE_OUT }}
-                  className="fixed inset-0 z-[100] h-full w-full cursor-default bg-black/90"
+                  className="fixed inset-0 z-[100] h-full w-full bg-black/90"
                 />
                 <div
                   inert={!isPresent}
