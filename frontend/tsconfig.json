@@ -15,7 +15,11 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [{ "name": "next" }],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": ".",
     "paths": {
       "@/app": ["./src/app/index.ts"],
@@ -35,5 +39,5 @@
     ".next/dev/types/**/*.ts",
     "../backend/src/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".wrangler"]
 }

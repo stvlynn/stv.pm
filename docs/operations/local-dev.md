@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Node.js 20+ and pnpm 9.
-- An Unsplash app's **Access Key** (https://unsplash.com/oauth/applications). The demo tier allows 50 requests an hour, far above what hourly regeneration uses.
+- An Unsplash app's **Access Key** (https://unsplash.com/oauth/applications). The demo tier allows 50 requests an hour, far above what a build uses.
 
 ## Setup
 

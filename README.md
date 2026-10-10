@@ -17,7 +17,7 @@ pnpm check                   # typecheck + lint + test
 
 ## Stack
 
-Next.js 16 (App Router, ISR) · React 19 · Tailwind CSS 4 · Motion · beUI
+Next.js 16 (App Router, static export) · React 19 · Tailwind CSS 4 · Motion · beUI
 components · Navy Ink design tokens (shared with the blog). See
 [`docs/project/architecture.md`](docs/project/architecture.md).
 

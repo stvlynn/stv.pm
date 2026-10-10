@@ -7,3 +7,7 @@ docs
 *.md
 frontend/src/shared/assets/signature-vector.ts
 frontend/app/icon.svg
+
+.wrangler/
+.dev.vars*
+out/

@@ -2,36 +2,54 @@
 
 ## Deployment target
 
-- Hosting: Vercel (native Next.js ISR). Any Node host that runs `next start` works the same way.
-- CI: GitHub Actions (`.github/workflows/ci.yml`) runs lint, format check, typecheck and tests on pushes and pull requests to `main`. It does not build, because a build needs the Unsplash key and network access.
+The application is exported to `frontend/out` and served by Cloudflare Workers
+Static Assets. There is no Worker application script, server runtime, R2 bucket,
+Durable Object, database, or runtime secret. Any static host can serve the output.
 
-## Vercel project settings
+CI runs lint, format check, typecheck and tests on pushes and pull requests to
+`main`. A production build also needs the Unsplash key and network access.
 
-`frontend/vercel.json` sets the framework and runs install and build from the repository root, where the lockfile and `backend/` live (the same layout the NotionNext blog deploys with).
-
-| Setting | Value |
-|---------|-------|
-| Root Directory | `frontend` |
-| Include files outside the root directory | enabled |
-| Environment variables | `UNSPLASH_ACCESS_KEY` for Production and Preview |
-| Domain | `stv.pm` |
-
-## Build
+## Build and deploy
 
 ```sh
+pnpm install --frozen-lockfile
 pnpm build
+pnpm deploy:worker
 ```
 
-The build renders the homepage once, so it needs `UNSPLASH_ACCESS_KEY` and network access to `blog.stv.pm` and `api.unsplash.com`.
+Each build clears Next.js' persisted fetch cache, fetches the blog JSON Feed and Unsplash photos, renders the homepage,
+and exports HTML, CSS, JavaScript, and metadata files. Set `UNSPLASH_ACCESS_KEY`
+in the build environment or the ignored `frontend/.env.local`; never commit it.
+The key is only used during compilation and is not included in public assets.
+
+`wrangler.jsonc` uploads `frontend/out` as static assets to `stv-pm`.
+`pnpm start` or `pnpm preview:worker` previews the completed export locally.
 
 ## Content freshness
 
-The homepage is regenerated at most once an hour (`export const revalidate = 3600` in `frontend/app/page.tsx`). If the blog or Unsplash fails during a regeneration, the previous page keeps being served and the error is logged by the host.
+Content changes only when a new build is deployed. Visitors receive the
+precompiled files and do not trigger blog or Unsplash API requests. Gallery
+images continue loading directly from the Unsplash image CDN. A failed source
+fails the build and leaves the previous deployment available.
 
-## Order of deploys
+The blog feed must provide `id`, `title`, `url`, and `date_published` for each item.
 
-The homepage depends on the blog's JSON Feed carrying `id` and `date_published` on each item. Deploy the NotionNext change that adds them before the first deploy of this site.
+## Workers Builds settings
+
+| Setting | Value |
+|---------|-------|
+| Root directory | `/` |
+| Build command | `pnpm build` |
+| Deploy command | `pnpm deploy:worker` |
+| Preview command | `pnpm exec wrangler versions upload` |
+| Build secret | `UNSPLASH_ACCESS_KEY` |
+
+The root Wrangler configuration prevents automatic framework migration to OpenNext.
+Set the build command explicitly so the export exists before deployment.
+
+Git integration is optional; the commands also support local deployments.
 
 ## Rollback
 
-Promote the previous deployment in Vercel. There is no state to migrate.
+Promote a previous static deployment in Cloudflare. There is no application state
+to migrate.

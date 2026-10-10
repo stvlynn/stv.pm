@@ -6,14 +6,17 @@
   "type": "module",
   "scripts": {
     "dev": "next dev frontend",
-    "build": "next build frontend",
-    "start": "next start frontend",
+    "build": "node scripts/build.mjs",
+    "start": "wrangler dev",
     "typecheck": "tsc -p frontend --noEmit",
     "lint": "eslint --max-warnings 0 frontend backend",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "check": "pnpm typecheck && pnpm lint && pnpm test"
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "build:worker": "pnpm build",
+    "deploy:worker": "wrangler deploy",
+    "preview:worker": "wrangler dev"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -43,6 +46,7 @@
     "prettier-plugin-tailwindcss": "0.7.1",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.11",
+    "wrangler": "^4.149.0"
   }
 }
