@@ -18,7 +18,7 @@
   top: calc((100cqh - var(--frame-h)) * var(--earth-y));
 }
 
-/* "That's here." A faint halo that breathes around the one-pixel Earth. */
+/* "That's here." A faint, still halo around the one-pixel Earth. */
 .earth {
   position: absolute;
   left: calc(var(--earth-x) * 100%);
@@ -30,28 +30,9 @@
   background: radial-gradient(
     circle,
     rgb(235 244 255 / 0.95) 0 1.5px,
-    rgb(160 200 255 / 0.35) 3px,
+    rgb(160 200 255 / 0.3) 3px,
     transparent 65%
   );
   mix-blend-mode: screen;
-  animation: breathe 4.8s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.35;
-    scale: 0.8;
-  }
-  50% {
-    opacity: 0.9;
-    scale: 1.15;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .earth {
-    animation: none;
-    opacity: 0.7;
-  }
+  opacity: 0.75;
 }
