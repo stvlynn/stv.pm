@@ -5,7 +5,7 @@ pnpm-lock.yaml
 .agents
 docs
 *.md
-frontend/src/shared/ui/signature/paths.ts
+frontend/src/shared/assets/signature-vector.ts
 frontend/app/icon.svg
 
 .wrangler/
