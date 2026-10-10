@@ -75,12 +75,12 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 - **Error handling** — adapters raise `UpstreamError` or `ConfigurationError`. Nothing is swallowed: a failed source fails the render. A failed source fails the build; the previous deployment stays online until a successful build is deployed.
 - **Copy** — every visible string lives in `frontend/src/shared/i18n/en.ts`; addresses and handles in `frontend/src/shared/config/site.ts`.
 - **Theming** — Navy Ink tokens in `frontend/src/app/styles/globals.css`, light/dark via `next-themes` (`.dark` on `<html>`).
-- **Pale Blue Dot** — `shared/assets/pale-blue-dot.jpg` is served through `next/image` (resized, modern formats, blur placeholder) in the sign-off drawer, and read from disk by the Open Graph route. `PALE_BLUE_DOT.earth` records where Earth sits in the frame; the drawer keeps that point in view at every aspect ratio and draws its halo there. Colours on the photo come from theme-independent tokens (`--photo-night`, `--on-photo-glow`).
+- **Pale Blue Dot** — `shared/assets/pale-blue-dot.jpg` is served through `next/image` as the original exported asset (blur placeholder, no runtime image optimizer) in the sign-off drawer, and read from disk by the Open Graph route. `PALE_BLUE_DOT.earth` records where Earth sits in the frame; the drawer keeps that point in view at every aspect ratio and draws its halo there. Colours on the photo come from theme-independent tokens (`--photo-night`, `--on-photo-glow`).
 - **Images** — gallery images are hot-linked from Unsplash's CDN (`urls.raw` plus imgix sizing), as Unsplash's API guidelines require; links back carry `utm_source=stv.pm&utm_medium=referral`.
 
 ## Technology stack
 
-- Runtime: Node.js 20+ (`.nvmrc`), pnpm 9
+- Runtime: Node.js 22+ (`.nvmrc`), pnpm 9
 - Framework: Next.js 16 App Router with static export (`output: 'export'`), React 19, TypeScript 5.9
 - Styling: Tailwind CSS 4, Navy Ink tokens, Geist Sans/Mono (`geist` package, self-hosted)
 - Motion: `motion` 13; components adapted from beUI (https://beui.dev)

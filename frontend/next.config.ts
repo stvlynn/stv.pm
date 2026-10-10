@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   turbopack: { root: repoRoot },
   outputFileTracingRoot: repoRoot,
   output: 'export',
+  images: { unoptimized: true },
   reactStrictMode: true,
   poweredByHeader: false
 }

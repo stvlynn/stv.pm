@@ -6,6 +6,9 @@ The application is exported to `frontend/out` and served by Cloudflare Workers
 Static Assets. There is no Worker application script, server runtime, R2 bucket,
 Durable Object, database, or runtime secret. Any static host can serve the output.
 
+`images.unoptimized: true` makes `next/image` reference the exported image files
+directly. Static hosting has no `/_next/image` optimization endpoint.
+
 CI runs lint, format check, typecheck and tests on pushes and pull requests to
 `main`. A production build also needs the Unsplash key and network access.
 
