@@ -1,0 +1,81 @@
+/*
+ * The photograph covers the scene like `object-fit: cover`, but as a real box
+ * so the glow can sit exactly on Earth. The box keeps the photo's aspect
+ * ratio, is at least as large as the scene in both directions, and is offset
+ * so Earth stays in frame at every viewport shape.
+ */
+.scene {
+  container-type: size;
+}
+
+.frame {
+  --frame-w: max(100cqw, 100cqh * var(--photo-ratio));
+  --frame-h: calc(var(--frame-w) / var(--photo-ratio));
+  position: absolute;
+  width: var(--frame-w);
+  height: var(--frame-h);
+  left: calc((100cqw - var(--frame-w)) * var(--earth-x));
+  top: calc((100cqh - var(--frame-h)) * var(--earth-y));
+}
+
+/* Fade the scene in from the page above and back out into the footer. */
+.veil {
+  /* Eased stops so the fade has no visible band at either end. */
+  --fade-90: color-mix(in oklab, var(--background) 90%, transparent);
+  --fade-60: color-mix(in oklab, var(--background) 60%, transparent);
+  --fade-25: color-mix(in oklab, var(--background) 25%, transparent);
+  --fade-8: color-mix(in oklab, var(--background) 8%, transparent);
+  background: linear-gradient(
+    to bottom,
+    var(--background) 0%,
+    var(--fade-90) 6%,
+    var(--fade-60) 14%,
+    var(--fade-25) 22%,
+    var(--fade-8) 28%,
+    transparent 34%,
+    transparent 68%,
+    var(--fade-8) 74%,
+    var(--fade-25) 81%,
+    var(--fade-60) 89%,
+    var(--fade-90) 95%,
+    var(--background) 100%
+  );
+}
+
+/* "That's here." A faint halo that breathes around the one-pixel Earth. */
+.earth {
+  position: absolute;
+  left: calc(var(--earth-x) * 100%);
+  top: calc(var(--earth-y) * 100%);
+  width: 2.25rem;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgb(235 244 255 / 0.95) 0 1.5px,
+    rgb(160 200 255 / 0.35) 3px,
+    transparent 65%
+  );
+  mix-blend-mode: screen;
+  animation: breathe 4.8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    scale: 0.8;
+  }
+  50% {
+    opacity: 0.9;
+    scale: 1.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .earth {
+    animation: none;
+    opacity: 0.7;
+  }
+}

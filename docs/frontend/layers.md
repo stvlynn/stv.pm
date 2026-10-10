@@ -67,15 +67,15 @@ Next.js owns `frontend/app/` for routing, so the FSD layers live in `frontend/sr
 
 | FSD layer | Path | Contents |
 |-----------|------|----------|
-| `app` | `src/app/` | `RootLayout`, `ThemeProvider`, `globals.css` (Navy Ink tokens), `metadata` |
+| `app` | `src/app/` | `RootLayout`, `ThemeProvider`, `globals.css` (Navy Ink tokens), `metadata`, Open Graph image |
 | `pages` | `src/pages/` | `home` |
 | `widgets` | `src/widgets/` | `intro`, `work`, `writing`, `photo-wall`, `elsewhere`, `sign-off`, `site-header`, `site-footer` |
 | `features` | `src/features/` | `toggle-theme` |
 | `entities` | `src/entities/` | `post`, `photo` |
-| `shared` | `src/shared/` | `config`, `i18n`, `lib`, `ui/{motion,brand,signature,section}` |
+| `shared` | `src/shared/` | `assets`, `config`, `i18n`, `lib`, `ui/{motion,brand,signature,section}` |
 
 `frontend/app/layout.tsx` and `frontend/app/page.tsx` stay one-liners: they import from `@/app` and `@/pages/home`, and `page.tsx` is the only frontend file that calls the backend. The empty `frontend/pages/` folder stops Next.js from treating `src/pages/` as the Pages Router.
 
 Path aliases: `@/app`, `@/pages/*`, `@/widgets/*`, `@/features/*`, `@/entities/*`, `@/shared/*`, and `@backend/*` for `backend/src/*`. ESLint rejects upward imports and imports of slice internals.
 
-`shared/ui/motion` holds components adapted from [beUI](https://beui.dev) (`SharedLayoutBg`, `TextReveal`, `ImageViewer`, `IconSwap`, `useViewTransitionTheme`) plus `Reveal`. Adapted files keep a header comment naming their beUI source; labels are passed in from `shared/i18n` instead of being written in the component.
+`shared/ui/motion` holds components adapted from [beUI](https://beui.dev) (`SharedLayoutBg`, `TextReveal`, `ImageViewer`, `IconSwap`, `useViewTransitionTheme`) plus `Reveal` and `ParallaxLayer`. Adapted files keep a header comment naming their beUI source; labels are passed in from `shared/i18n` instead of being written in the component.

@@ -19,7 +19,7 @@ export interface HomePageProps {
 /**
  * One narrow reading column; the photo wall alone widens to give the
  * pictures room. Sections settle in one after another on first paint, and
- * the handwritten signature closes the page.
+ * the handwritten signature closes the page over the Pale Blue Dot.
  */
 export function HomePage({ posts, photos, year }: HomePageProps) {
   return (
@@ -42,9 +42,9 @@ export function HomePage({ posts, photos, year }: HomePageProps) {
           <Reveal>
             <Elsewhere />
           </Reveal>
-          <div className="mt-20">
-            <SignOff />
-          </div>
+        </div>
+        <div className="mt-16">
+          <SignOff />
         </div>
       </main>
       <SiteFooter year={year} />

@@ -50,7 +50,10 @@ export const en = {
     }
   },
   signOff: {
-    label: 'Signed, Steven Lynn'
+    label: 'Signed, Steven Lynn',
+    photoAlt:
+      'Earth as a single pale blue point of light inside a band of scattered sunlight, photographed by Voyager 1 from about six billion kilometres away',
+    credit: 'Pale Blue Dot · Voyager 1, 14 February 1990 · NASA/JPL-Caltech'
   },
   theme: {
     toLight: 'Switch to light theme',

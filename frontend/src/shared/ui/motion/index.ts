@@ -7,6 +7,7 @@ export {
   type ImageViewerImage,
   type ImageViewerLabels
 } from './image-viewer'
+export { ParallaxLayer } from './parallax-layer'
 export { Reveal } from './reveal'
 export { SharedLayoutBg } from './shared-layout-bg'
 export { TextReveal } from './text-reveal'

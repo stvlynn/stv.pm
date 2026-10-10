@@ -15,7 +15,9 @@ This section describes the project at a high level: what it is, what it is not, 
 3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
 4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.
 5. **Elsewhere** — X, Telegram, GitHub, Unsplash.
-6. **Sign-off** — the handwritten signature closes the page where a call to action would sit. It writes itself once it scrolls into view.
+6. **Sign-off** — the handwritten signature closes the page where a call to action would sit, over Voyager 1's *Pale Blue Dot* (NASA/JPL-Caltech, public domain). It writes itself once it scrolls into view; a faint halo breathes around Earth, and the photo drifts slower than the page.
+
+The same photograph with the signature is the Open Graph image (`frontend/app/opengraph-image.tsx`, rendered at build time).
 
 The blog (repository `stvlynn/NotionNext`, theme `navyink`) links back here from its header ("About") and footer, and both sites use the same Navy Ink design tokens.
 
