@@ -44,6 +44,11 @@ export const en = {
       failed: 'This photo could not be loaded.'
     }
   },
+  coffeeChat: {
+    title: 'Coffee chat',
+    note: 'Pick a time that works for you.',
+    book: 'Book a time'
+  },
   elsewhere: {
     title: 'Elsewhere',
     links: {

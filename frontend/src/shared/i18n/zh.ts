@@ -37,6 +37,11 @@ export const zh: Dictionary = {
       failed: '照片加载失败。'
     }
   },
+  coffeeChat: {
+    title: '咖啡闲聊',
+    note: '选一个你方便的时间，我们聊聊。',
+    book: '预约时间'
+  },
   elsewhere: {
     title: '其他平台',
     links: {

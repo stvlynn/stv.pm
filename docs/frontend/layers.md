@@ -69,7 +69,7 @@ Next.js owns `frontend/app/` for routing, so the FSD layers live in `frontend/sr
 |-----------|------|----------|
 | `app` | `src/app/` | `RootLayout`, `ThemeProvider`, `globals.css` (Navy Ink tokens), `metadata`, Open Graph image |
 | `pages` | `src/pages/` | `home` |
-| `widgets` | `src/widgets/` | `intro`, `work`, `writing`, `photo-wall`, `elsewhere`, `sign-off`, `site-header`, `site-footer` |
+| `widgets` | `src/widgets/` | `intro`, `work`, `writing`, `photo-wall`, `coffee-chat`, `elsewhere`, `sign-off`, `site-header`, `site-footer` |
 | `features` | `src/features/` | `toggle-theme`, `switch-language` |
 | `entities` | `src/entities/` | `post`, `photo` |
 | `shared` | `src/shared/` | `assets`, `config`, `i18n`, `lib`, `ui/{motion,brand,section}` |
