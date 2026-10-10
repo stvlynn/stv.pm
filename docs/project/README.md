@@ -15,7 +15,7 @@ This section describes the project at a high level: what it is, what it is not, 
 3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
 4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.
 5. **Elsewhere** — X, Telegram, GitHub, Unsplash.
-6. **Sign-off** — closes the page where a call to action would sit: a drawer that opens with the scroll onto Voyager 1's *Pale Blue Dot* (NASA/JPL-Caltech, public domain). It rises as a rounded sheet, widens to full screen and pins, showing the original handwritten signature image (`shared/assets/signature.png`) as drawn. A faint, still halo marks Earth (nothing on the photo loops or flickers), and the footer sits on the pale band of sunlight at the bottom.
+6. **Sign-off** — closes the page where a call to action would sit: a drawer that opens with the scroll onto Voyager 1's *Pale Blue Dot* (NASA/JPL-Caltech, public domain). It rises as a rounded sheet, widens to full screen and pins, showing the original handwritten signature image (`shared/assets/signature.png`) as drawn. The photograph is shown as is, with nothing drawn over it, and the footer sits on the pale band of sunlight at the bottom.
 
 The Open Graph image (`frontend/app/opengraph-image.tsx`, rendered at build time) is a solid white vector trace of the signature over the same photograph, with no text.
 

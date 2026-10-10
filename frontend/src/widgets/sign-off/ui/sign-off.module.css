@@ -1,8 +1,8 @@
 /*
- * The photograph covers the scene like `object-fit: cover`, but as a real box
- * so the glow can sit exactly on Earth. The box keeps the photo's aspect
- * ratio, is at least as large as the scene in both directions, and is offset
- * so Earth stays in frame at every viewport shape.
+ * The photograph covers the scene like `object-fit: cover`. The box keeps the
+ * photo's aspect ratio, is at least as large as the scene in both directions,
+ * and is offset on Earth's position so Earth stays in frame at every viewport
+ * shape. Nothing is drawn over the photograph.
  */
 .scene {
   container-type: size;
@@ -16,23 +16,4 @@
   height: var(--frame-h);
   left: calc((100cqw - var(--frame-w)) * var(--earth-x));
   top: calc((100cqh - var(--frame-h)) * var(--earth-y));
-}
-
-/* "That's here." A faint, still halo around the one-pixel Earth. */
-.earth {
-  position: absolute;
-  left: calc(var(--earth-x) * 100%);
-  top: calc(var(--earth-y) * 100%);
-  width: 2.25rem;
-  aspect-ratio: 1;
-  translate: -50% -50%;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgb(235 244 255 / 0.95) 0 1.5px,
-    rgb(160 200 255 / 0.3) 3px,
-    transparent 65%
-  );
-  mix-blend-mode: screen;
-  opacity: 0.75;
 }

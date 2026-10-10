@@ -36,7 +36,6 @@ export function SignOff({ footer }: { footer: ReactNode }) {
                 loading="eager"
                 className="select-none"
               />
-              <span aria-hidden="true" className={styles.earth} />
             </div>
           </div>
         }
