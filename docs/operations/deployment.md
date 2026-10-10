@@ -9,6 +9,9 @@ Durable Object, database, or runtime secret. Any static host can serve the outpu
 CI runs lint, format check, typecheck and tests on pushes and pull requests to
 `main`. A production build also needs the Unsplash key and network access.
 
+Wrangler requires Node.js 22 or later. Workers Builds and GitHub CI read
+`.nvmrc` to select a compatible runtime.
+
 ## Build and deploy
 
 ```sh
