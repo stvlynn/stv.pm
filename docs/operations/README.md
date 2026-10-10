@@ -9,31 +9,18 @@ This section covers how the project is run, built, deployed, and monitored.
 
 ## Environment
 
-Fill in concrete environment requirements here once the technology stack is chosen:
-
-- Runtime version: `__RUNTIME_VERSION__`
-- Required environment variables: `DATABASE_URL`, `PORT`, `LOG_LEVEL`, etc.
-- Local services: database, cache, message broker.
+- Runtime: Node.js 20+ (`.nvmrc`), pnpm 9 (`packageManager` in `package.json`).
+- Environment variables: see [`local-dev.md`](local-dev.md#environment-variables).
+- No database, cache or broker. Content comes from the blog's JSON Feed and the Unsplash API.
 
 ## Commands
 
-Define the standard commands for this project. Placeholders:
-
 ```sh
-# Install dependencies
-__INSTALL_COMMAND__
-
-# Run tests
-__TEST_COMMAND__
-
-# Run type checks
-__TYPECHECK_COMMAND__
-
-# Start the backend
-__START_BACKEND__
-
-# Start the frontend
-__START_FRONTEND__
+pnpm install          # install dependencies
+pnpm dev              # dev server on http://localhost:3000
+pnpm build            # production build (fetches the blog feed and Unsplash)
+pnpm start            # serve the production build
+pnpm check            # typecheck + lint + test (what CI runs, plus format:check)
 ```
 
-Replace these with real commands when the stack is selected.
+`make help` lists the same commands.

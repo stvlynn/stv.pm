@@ -1,23 +1,25 @@
-.PHONY: check test lint format docs deploy help
+.PHONY: install dev build check test lint format help
 
-check: ## Run all quality checks (placeholder)
-	@echo "Replace this with: typecheck + lint + test + build"
-	@npm run check
+install: ## Install dependencies
+	@pnpm install
 
-test: ## Run tests (placeholder)
-	@npm run test
+dev: ## Start the dev server on http://localhost:3000
+	@pnpm dev
 
-lint: ## Run linter (placeholder)
-	@npm run lint
+build: ## Production build (needs UNSPLASH_ACCESS_KEY and network access to the blog)
+	@pnpm build
 
-format: ## Run formatter (placeholder)
-	@npm run format
+check: ## Typecheck, lint and test
+	@pnpm check
 
-docs: ## Validate documentation links (placeholder)
-	@npm run docs:check
+test: ## Run unit tests
+	@pnpm test
 
-deploy: ## Deploy the project (placeholder)
-	@echo "See deploy/README.md for deployment options"
+lint: ## Run ESLint (includes FSD/DDD import boundaries)
+	@pnpm lint
+
+format: ## Format with Prettier
+	@pnpm format
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-12s %s\n", $$1, $$2}'

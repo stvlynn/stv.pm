@@ -1,0 +1,9 @@
+{
+  "name": "stv.pm-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "cd .. && pnpm build",
+    "start": "next start"
+  }
+}

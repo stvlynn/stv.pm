@@ -1,0 +1,9 @@
+node_modules
+.next
+pnpm-lock.yaml
+.claude
+.agents
+docs
+*.md
+frontend/src/shared/ui/signature/paths.ts
+frontend/app/icon.svg
