@@ -34,7 +34,7 @@ One Next.js application (`frontend/`) renders a single statically generated page
 
 ```text
 frontend/
-  app/                 Next.js routing only: layout.tsx, page.tsx, icon.svg
+  app/                 Next.js routing only: layout.tsx, page.tsx, icon.svg, opengraph-image.tsx
   pages/               empty on purpose (keeps Next.js off src/pages)
   src/
     app/               FSD app layer: root layout, theme provider, global CSS, metadata
@@ -42,7 +42,7 @@ frontend/
     widgets/           intro, work, writing, photo-wall, elsewhere, sign-off, site-header, site-footer
     features/          toggle-theme
     entities/          post, photo (types = backend DTOs, plus pure helpers)
-    shared/            config, i18n (all copy), lib, ui (motion, brand, signature, section)
+    shared/            assets (Pale Blue Dot), config, i18n (all copy), lib, ui (motion, brand, signature, section)
 backend/src/
   domain/              Post, Photo, repository ports, errors
   application/home/    getHome use case and DTOs
@@ -75,6 +75,7 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 - **Error handling** — adapters raise `UpstreamError` or `ConfigurationError`. Nothing is swallowed: a failed source fails the render. With ISR, a failed hourly regeneration keeps serving the last good page; a failed first build fails the deploy.
 - **Copy** — every visible string lives in `frontend/src/shared/i18n/en.ts`; addresses and handles in `frontend/src/shared/config/site.ts`.
 - **Theming** — Navy Ink tokens in `frontend/src/app/styles/globals.css`, light/dark via `next-themes` (`.dark` on `<html>`).
+- **Pale Blue Dot** — `shared/assets/pale-blue-dot.jpg` is served through `next/image` (resized, modern formats, blur placeholder) in the sign-off drawer, and read from disk by the Open Graph route. `PALE_BLUE_DOT.earth` records where Earth sits in the frame; the drawer keeps that point in view at every aspect ratio and draws its halo there. Colours on the photo come from theme-independent tokens (`--photo-night`, `--on-photo-sky`, `--on-photo-glow`).
 - **Images** — gallery images are hot-linked from Unsplash's CDN (`urls.raw` plus imgix sizing), as Unsplash's API guidelines require; links back carry `utm_source=stv.pm&utm_medium=referral`.
 
 ## Technology stack

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: copy.meta.title
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     creator: site.social.x.handle
   }
 }
