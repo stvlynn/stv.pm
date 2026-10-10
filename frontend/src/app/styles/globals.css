@@ -73,8 +73,24 @@
   --color-tencent: var(--tencent);
   --color-dify: var(--dify);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), var(--font-cjk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/*
+ * Geist has no Chinese or Japanese glyphs. Each locale names its own CJK
+ * fallback so Han characters are drawn in the regional form.
+ */
+:root {
+  --font-cjk: ui-sans-serif;
+}
+
+:root:lang(ja) {
+  --font-cjk: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic UI', Meiryo;
+}
+
+:root:lang(zh) {
+  --font-cjk: 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei';
 }
 
 @layer base {

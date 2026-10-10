@@ -1,5 +1,5 @@
 import { type CompanyId, site } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { CompanyLogo } from '@/shared/ui/brand'
 import { SharedLayoutBg } from '@/shared/ui/motion'
 import { Section } from '@/shared/ui/section'
@@ -7,7 +7,8 @@ import { Section } from '@/shared/ui/section'
 /** Current role first, then where I came from. */
 const ORDER: readonly CompanyId[] = ['tencent', 'dify']
 
-export function Work() {
+export function Work({ locale }: { locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <Section id="work" title={copy.work.title}>
       <SharedLayoutBg as="ul">

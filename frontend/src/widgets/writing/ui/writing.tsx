@@ -1,11 +1,12 @@
 import { formatPostDate, type Post } from '@/entities/post'
 import { site } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { SharedLayoutBg } from '@/shared/ui/motion'
 import { QuietLink, Section } from '@/shared/ui/section'
 
 /** Latest posts from blog.stv.pm, newest first. */
-export function Writing({ posts }: { posts: Post[] }) {
+export function Writing({ posts, locale }: { posts: Post[]; locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <Section
       id="writing"
@@ -24,7 +25,7 @@ export function Writing({ posts }: { posts: Post[] }) {
                 dateTime={post.publishedAt}
                 className="shrink-0 text-sm text-subtle-foreground tabular-nums"
               >
-                {formatPostDate(post.publishedAt)}
+                {formatPostDate(post.publishedAt, locale)}
               </time>
             </a>
           </li>

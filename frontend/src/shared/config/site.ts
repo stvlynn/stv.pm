@@ -5,7 +5,6 @@ export const site = {
   blogFeedUrl: 'https://blog.stv.pm/rss/feed.xml',
   /** Dates on the page are shown in the owner's time zone. */
   timeZone: 'Asia/Shanghai',
-  locale: 'en',
   social: {
     x: { href: 'https://x.com/stv_lynn', handle: '@stv_lynn' },
     telegram: { href: 'https://t.me/stvlynn', handle: '@stvlynn' },

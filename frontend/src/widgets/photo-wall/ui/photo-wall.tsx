@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useMemo } from 'react'
 import { type Photo, photoTileSrc, photoTileSrcSet, photoViewerSrc } from '@/entities/photo'
 import { site } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import {
   ImageViewer,
   ImageViewerContent,
@@ -15,17 +15,13 @@ import {
 } from '@/shared/ui/motion'
 import { QuietLink, Section } from '@/shared/ui/section'
 
-const labels = {
-  gallery: copy.photos.gallery,
-  open: copy.photos.open,
-  ...copy.photos.viewer
-}
-
 /**
  * The latest Unsplash photographs as a masonry wall. A tile morphs into a
  * full-screen viewer with swipe, arrow-key and zoom controls.
  */
-export function PhotoWall({ photos }: { photos: Photo[] }) {
+export function PhotoWall({ photos, locale }: { photos: Photo[]; locale: Locale }) {
+  const copy = getCopy(locale)
+  const labels = { gallery: copy.photos.gallery, open: copy.photos.open, ...copy.photos.viewer }
   const images = useMemo<ImageViewerImage[]>(
     () =>
       photos.map((photo) => ({
@@ -38,7 +34,7 @@ export function PhotoWall({ photos }: { photos: Photo[] }) {
         height: photo.height,
         placeholder: photo.color
       })),
-    [photos]
+    [photos, copy]
   )
   const pages = useMemo(() => new Map(photos.map((photo) => [photo.id, photo.pageUrl])), [photos])
 

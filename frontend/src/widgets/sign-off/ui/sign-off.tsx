@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import type { CSSProperties, ReactNode } from 'react'
 import { PALE_BLUE_DOT, SIGNATURE_IMAGE } from '@/shared/assets'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { cn } from '@/shared/lib'
 import { ScrollDrawer } from '@/shared/ui/motion'
 import styles from './sign-off.module.css'
@@ -20,7 +20,8 @@ const photoVars = {
  * handwritten signature. Earth is a single point in the sunbeam below it;
  * `footer` sits on the pale band of light at the bottom.
  */
-export function SignOff({ footer }: { footer: ReactNode }) {
+export function SignOff({ footer, locale }: { footer: ReactNode; locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <figure>
       <ScrollDrawer

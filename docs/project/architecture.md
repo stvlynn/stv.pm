@@ -9,8 +9,8 @@ One Next.js application (`frontend/`) renders a single statically generated page
 ```text
                       build time only
 +---------------------+   loadHome()   +------------------------------+
-| frontend/app/page   | -------------> | backend/src/interfaces/web   |
-| (Next.js route)     |                | composition root             |
+| frontend/app/[[...  | -------------> | backend/src/interfaces/web   |
+| locale]]/page       |                | composition root             |
 +---------------------+                +------------------------------+
           |                                          |
           v                                          v
@@ -34,13 +34,15 @@ One Next.js application (`frontend/`) renders a single statically generated page
 
 ```text
 frontend/
-  app/                 Next.js routing only: layout.tsx, page.tsx, icon.svg, opengraph-image.tsx
+  app/                 Next.js routing only: [[...locale]]/{layout,page}.tsx, global-not-found.tsx,
+                       icon.svg, opengraph-image.tsx
   pages/               empty on purpose (keeps Next.js off src/pages)
   src/
-    app/               FSD app layer: root layout, theme provider, global CSS, metadata
+    app/               FSD app layer: root layout, theme provider, global CSS, metadata,
+                       locale route params, 404 page, Open Graph image
     pages/home/        the homepage composition
     widgets/           intro, work, writing, photo-wall, elsewhere, sign-off, site-header, site-footer
-    features/          toggle-theme
+    features/          toggle-theme, switch-language
     entities/          post, photo (types = backend DTOs, plus pure helpers)
     shared/            assets (Pale Blue Dot, signature), config, i18n (all copy), lib, ui (motion, brand, section)
 backend/src/
@@ -54,13 +56,13 @@ backend/src/
 
 | Module | Responsibility | Example |
 |--------|----------------|---------|
-| `frontend/app` | Next.js routes; the only place that calls the backend | `page.tsx` calls `loadHome()` |
+| `frontend/app` | Next.js routes; the only place that calls the backend | `[[...locale]]/page.tsx` calls `loadHome()` |
 | Frontend `app` | Document shell, providers, tokens | `RootLayout`, `globals.css` |
 | Frontend `pages` | Page composition | `HomePage` |
 | Frontend `widgets` | One block of the page each | `PhotoWall`, `Writing` |
 | Frontend `features` | User scenarios | `ThemeToggle` |
 | Frontend `entities` | Post/photo types and pure helpers | `formatPostDate`, `photoUrl` |
-| Frontend `shared` | Copy, config, primitives, beUI motion components | `copy`, `SharedLayoutBg`, `Signature` |
+| Frontend `shared` | Copy, config, primitives, beUI motion components | `getCopy`, `SharedLayoutBg`, `ScrollDrawer` |
 | Backend `interfaces` | Composition root for the web route | `loadHome` |
 | Backend `application` | Use cases returning DTOs | `getHome` |
 | Backend `domain` | Entities, ports, ordering rules | `Post`, `byNewest`, `PhotoRepository` |
@@ -73,7 +75,8 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 - **Frontend/backend contract** — `backend/src/application/home/dto.ts`. The frontend entities re-export `PostDto` and `PhotoDto` as `Post` and `Photo` (documented exception to "entities import only from shared"). Dates cross as ISO strings.
 - **Blog contract** — the blog's JSON Feed must give every item `id`, `title`, `url` and `date_published`; NotionNext documents this in `docs/backend/interfaces.md`.
 - **Error handling** — adapters raise `UpstreamError` or `ConfigurationError`. Nothing is swallowed: a failed source fails the render. A failed source fails the build; the previous deployment stays online until a successful build is deployed.
-- **Copy** — every visible string lives in `frontend/src/shared/i18n/en.ts`; addresses and handles in `frontend/src/shared/config/site.ts`.
+- **Copy and languages** — every visible string lives in `frontend/src/shared/i18n/{en,ja,zh}.ts`; `ja` and `zh` are typed against English (`Dictionary`), and a test checks they have exactly the same keys. Components take a `locale` prop and read `getCopy(locale)`. Addresses and handles live in `frontend/src/shared/config/site.ts`. Blog post titles and Unsplash descriptions come from their sources and are not translated.
+- **Locale routing** — the root layout is the optional catch-all `app/[[...locale]]`: no segment is English at `/`, one segment is `/ja` or `/zh`. All three pages are prerendered (`generateStaticParams`, `dynamicParams = false`), each with its own `<html lang>` (`en`, `ja`, `zh-CN`) so browsers pick the regional CJK glyphs, `hreflang` alternates, `og:locale` and a per-locale CJK font fallback (`--font-cjk`). Because each locale is its own root layout, switching languages is a full page load. With no root layout at `app/`, the 404 page is `app/global-not-found.tsx` (`experimental.globalNotFound`), in English. `TextReveal` animates CJK text one character at a time (`splitTextUnits`) so lines without spaces still wrap.
 - **Theming** — Navy Ink tokens in `frontend/src/app/styles/globals.css`, light/dark via `next-themes` (`.dark` on `<html>`).
 - **Pale Blue Dot** — `shared/assets/pale-blue-dot.jpg` is served through `next/image` as the original exported asset (no runtime image optimizer) in the sign-off drawer, loaded eagerly with the page together with `signature.png` (both are preloaded in `<head>`) so the drawer never opens onto an empty frame, and read from disk by the Open Graph route. `PALE_BLUE_DOT.earth` records where Earth sits in the frame; the drawer keeps that point in view at every aspect ratio. Nothing is overlaid on the photograph. Colours on the photo come from theme-independent tokens (`--photo-night`, `--on-photo-glow`).
 - **Images** — gallery images are hot-linked from Unsplash's CDN (`urls.raw` plus imgix sizing), as Unsplash's API guidelines require; links back carry `utm_source=stv.pm&utm_medium=referral`.

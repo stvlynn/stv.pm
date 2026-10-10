@@ -1,9 +1,10 @@
 import { readFile } from 'node:fs/promises'
 import { ImageResponse } from 'next/og'
 import { PALE_BLUE_DOT, SIGNATURE_HEART, SIGNATURE_SOLID, SIGNATURE_VIEWBOX } from '@/shared/assets'
-import { copy } from '@/shared/i18n'
+import { DEFAULT_LOCALE, getCopy } from '@/shared/i18n'
 
 export const ogImageSize = { width: 1200, height: 630 } as const
+const copy = getCopy(DEFAULT_LOCALE)
 export const ogImageAlt = `${copy.meta.title}: ${copy.signOff.credit}`
 
 const SIGNATURE_WIDTH = 470

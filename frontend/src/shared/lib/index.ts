@@ -8,3 +8,4 @@ export {
   SPRING_SWAP
 } from './motion'
 export { useIsClient } from './use-is-client'
+export { splitTextUnits } from './text-units'

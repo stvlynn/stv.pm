@@ -2,12 +2,13 @@
 
 import { Moon, Sun } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { cn, SPRING_PRESS } from '@/shared/lib'
 import { IconSwap, useViewTransitionTheme } from '@/shared/ui/motion'
 
 /** Switches light/dark; the new theme spreads out from the button. */
-export function ThemeToggle({ className }: { className?: string }) {
+export function ThemeToggle({ locale, className }: { locale: Locale; className?: string }) {
+  const copy = getCopy(locale)
   const { isDark, mounted, toggle } = useViewTransitionTheme()
   const reduce = useReducedMotion()
 
