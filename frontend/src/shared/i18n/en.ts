@@ -47,7 +47,7 @@ export const en = {
   coffeeChat: {
     title: 'Coffee chat',
     note: 'Pick a time that works for you.',
-    book: 'Book a time'
+    openInNewTab: 'Open in a new tab'
   },
   elsewhere: {
     title: 'Elsewhere',

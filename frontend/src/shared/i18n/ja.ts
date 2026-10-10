@@ -41,7 +41,7 @@ export const ja: Dictionary = {
   coffeeChat: {
     title: 'コーヒーチャット',
     note: 'ご都合のよい時間をお選びください。',
-    book: '日程を予約'
+    openInNewTab: '新しいタブで開く'
   },
   elsewhere: {
     title: 'リンク',

@@ -1,32 +1,39 @@
-import { ArrowUpRight, Coffee } from 'lucide-react'
+import Script from 'next/script'
 import { site } from '@/shared/config'
 import { getCopy, type Locale } from '@/shared/i18n'
-import { Magnetic } from '@/shared/ui/motion'
-import { Section } from '@/shared/ui/section'
+import { QuietLink, Section } from '@/shared/ui/section'
 
-/** An open invitation to talk: one line and a button to the booking page. */
+/** Height Feishu's inline embed is designed for. */
+const EMBED_HEIGHT = 626
+
+/**
+ * An open invitation to talk with the booking calendar right on the page:
+ * Feishu's (Lark) Scheduler inline embed. Its script finds the
+ * `scheduler-inline-widget` element and fills it with the scheduler iframe.
+ * The script loads after hydration, so React never sees the injected iframe.
+ */
 export function CoffeeChat({ locale }: { locale: Locale }) {
   const copy = getCopy(locale)
+  const { href, embedUrl, widgetScript } = site.coffeeChat
   return (
-    <Section id="coffee-chat" title={copy.coffeeChat.title}>
-      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-1">
-        <p className="text-pretty">{copy.coffeeChat.note}</p>
-        <Magnetic>
-          <a
-            href={site.coffeeChat.href}
-            target="_blank"
-            rel="noopener"
-            className="group inline-flex h-9 items-center gap-2 rounded-full border border-border px-4 text-sm font-medium transition-colors duration-200"
-          >
-            <Coffee aria-hidden="true" className="size-4 text-muted-foreground" />
-            {copy.coffeeChat.book}
-            <ArrowUpRight
-              aria-hidden="true"
-              className="size-3.5 text-muted-foreground transition-transform duration-200 ease-out group-hover:translate-x-px group-hover:-translate-y-px"
-            />
-          </a>
-        </Magnetic>
+    <Section
+      id="coffee-chat"
+      title={copy.coffeeChat.title}
+      action={
+        <QuietLink href={href} newTab>
+          {copy.coffeeChat.openInNewTab}
+        </QuietLink>
+      }
+    >
+      <p className="mb-4 text-pretty">{copy.coffeeChat.note}</p>
+      <div className="overflow-hidden rounded-xl border border-border bg-embed-surface">
+        <div
+          className="scheduler-inline-widget"
+          data-url={embedUrl}
+          style={{ width: '100%', height: EMBED_HEIGHT }}
+        />
       </div>
+      <Script src={widgetScript} strategy="lazyOnload" />
     </Section>
   )
 }

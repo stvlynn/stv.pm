@@ -39,6 +39,8 @@
   /* The signature's heart; also the cursor fill (hard-coded in its data URIs). */
   --heart: #fba1a1;
   --heart-glow: color-mix(in srgb, var(--heart) 34%, transparent);
+  /* Behind third-party embeds (the Feishu scheduler), which are light-only. */
+  --embed-surface: #ffffff;
   /* Over the Pale Blue Dot photograph: night sky, and text on the pale band
      of sunlight at the bottom. */
   --photo-night: #0b1520;
@@ -72,6 +74,7 @@
   --color-brand-muted: var(--brand-muted);
   --color-ring: var(--ring);
   --color-heart-glow: var(--heart-glow);
+  --color-embed-surface: var(--embed-surface);
   --color-photo-night: var(--photo-night);
   --color-on-photo-glow: var(--on-photo-glow);
   --color-on-photo-glow-strong: var(--on-photo-glow-strong);

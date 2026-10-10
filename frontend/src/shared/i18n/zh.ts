@@ -40,7 +40,7 @@ export const zh: Dictionary = {
   coffeeChat: {
     title: '咖啡闲聊',
     note: '选一个你方便的时间，我们聊聊。',
-    book: '预约时间'
+    openInNewTab: '在新标签页打开'
   },
   elsewhere: {
     title: '其他平台',
