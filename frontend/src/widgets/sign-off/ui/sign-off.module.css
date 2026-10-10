@@ -18,30 +18,6 @@
   top: calc((100cqh - var(--frame-h)) * var(--earth-y));
 }
 
-/* Fade the scene in from the page above and back out into the footer. */
-.veil {
-  /* Eased stops so the fade has no visible band at either end. */
-  --fade-90: color-mix(in oklab, var(--background) 90%, transparent);
-  --fade-60: color-mix(in oklab, var(--background) 60%, transparent);
-  --fade-25: color-mix(in oklab, var(--background) 25%, transparent);
-  --fade-8: color-mix(in oklab, var(--background) 8%, transparent);
-  background: linear-gradient(
-    to bottom,
-    var(--background) 0%,
-    var(--fade-90) 6%,
-    var(--fade-60) 14%,
-    var(--fade-25) 22%,
-    var(--fade-8) 28%,
-    transparent 34%,
-    transparent 68%,
-    var(--fade-8) 74%,
-    var(--fade-25) 81%,
-    var(--fade-60) 89%,
-    var(--fade-90) 95%,
-    var(--background) 100%
-  );
-}
-
 /* "That's here." A faint halo that breathes around the one-pixel Earth. */
 .earth {
   position: absolute;

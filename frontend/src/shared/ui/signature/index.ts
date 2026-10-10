@@ -1,3 +1,2 @@
-export { SIGNATURE_FIRST, SIGNATURE_HEART, SIGNATURE_LAST, SIGNATURE_VIEWBOX } from './paths'
+export { SIGNATURE_HEART, SIGNATURE_SOLID, SIGNATURE_VIEWBOX } from './paths'
 export { Signature } from './signature'
-export { WriteOnView } from './write-on-view'

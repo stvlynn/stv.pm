@@ -1,7 +1,7 @@
 /*
  * The signature writes itself: a feathered mask sweeps across each line in
  * reading order, then the heart pops in. The artwork is plain CSS + SVG in the
- * HTML; `WriteOnView` only holds the animation until the signature is seen.
+ * HTML; a surrounding `ScrollDrawer` only holds it until the drawer is open.
  */
 
 .wipe {
@@ -35,9 +35,9 @@
     beat 0.7s cubic-bezier(0.2, 0, 0, 1) 1;
 }
 
-/* Held, delays included, until `WriteOnView` sees the signature. */
-[data-writing='waiting'] .wipe,
-[data-writing='waiting'] .heart {
+/* Held, delays included, while inside a closed `ScrollDrawer`. */
+[data-drawer='closed'] .wipe,
+[data-drawer='closed'] .heart {
   animation-play-state: paused;
 }
 
