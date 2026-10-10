@@ -26,6 +26,7 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { cn, EASE_DRAWER, EASE_OUT, SPRING_LAYOUT, SPRING_PRESS, useIsClient } from '@/shared/lib'
+import { Magnetic } from './magnetic'
 import { PresenceGate } from './presence-gate'
 import { useModalScope } from './use-modal-scope'
 
@@ -237,22 +238,24 @@ function ViewerButton({
         : false
   const Icon = action === 'close' ? X : action === 'previous' ? ChevronLeft : ChevronRight
   return (
-    <button
-      type="button"
-      aria-label={labels[action]}
-      {...props}
-      disabled={disabled || unavailable}
-      onClick={(event) => {
-        onClick?.(event)
-        if (!event.defaultPrevented) {
-          if (action === 'close') select(null)
-          else move(action === 'previous' ? -1 : 1)
-        }
-      }}
-      className={cn(controlClass, className)}
-    >
-      {children ?? <Icon size={18} aria-hidden="true" />}
-    </button>
+    <Magnetic disabled={disabled || unavailable}>
+      <button
+        type="button"
+        aria-label={labels[action]}
+        {...props}
+        disabled={disabled || unavailable}
+        onClick={(event) => {
+          onClick?.(event)
+          if (!event.defaultPrevented) {
+            if (action === 'close') select(null)
+            else move(action === 'previous' ? -1 : 1)
+          }
+        }}
+        className={cn(controlClass, className)}
+      >
+        {children ?? <Icon size={18} aria-hidden="true" />}
+      </button>
+    </Magnetic>
   )
 }
 export function ImageViewerClose(props: ViewerButtonProps) {

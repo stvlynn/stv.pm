@@ -36,6 +36,9 @@
   --ring: var(--corn-500);
 
   /* Artwork and brand colours that do not follow the theme. */
+  /* The signature's heart; also the cursor fill (hard-coded in its data URIs). */
+  --heart: #fba1a1;
+  --heart-glow: color-mix(in srgb, var(--heart) 34%, transparent);
   /* Over the Pale Blue Dot photograph: night sky, and text on the pale band
      of sunlight at the bottom. */
   --photo-night: #0b1520;
@@ -46,6 +49,7 @@
 }
 
 .dark {
+  --heart-glow: color-mix(in srgb, var(--heart) 26%, transparent);
   --background: var(--ink-950);
   --foreground: var(--ink-100);
   --muted-foreground: var(--ink-400);
@@ -67,6 +71,7 @@
   --color-brand: var(--brand);
   --color-brand-muted: var(--brand-muted);
   --color-ring: var(--ring);
+  --color-heart-glow: var(--heart-glow);
   --color-photo-night: var(--photo-night);
   --color-on-photo-glow: var(--on-photo-glow);
   --color-on-photo-glow-strong: var(--on-photo-glow-strong);
@@ -160,6 +165,18 @@
         )
         6 4,
       pointer;
+  }
+}
+
+/*
+ * Over a `Magnetic` control the cursor hides: the control's heart-pink
+ * highlight takes its place (shared/ui/motion/magnetic.tsx). `:root` lifts
+ * this above the link and button cursor rule.
+ */
+@media (pointer: fine) {
+  :root [data-magnetic],
+  :root [data-magnetic] * {
+    cursor: none;
   }
 }
 

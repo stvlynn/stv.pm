@@ -1,5 +1,6 @@
 import { getCopy, LOCALE_META, LOCALES, type Locale, localePath } from '@/shared/i18n'
 import { cn } from '@/shared/lib'
+import { Magnetic } from '@/shared/ui/motion'
 
 /**
  * EN · JA · ZH. Each option links to that locale's page and is named in its
@@ -16,21 +17,23 @@ export function LanguageSwitch({ locale, className }: { locale: Locale; classNam
           const active = option === locale
           return (
             <li key={option}>
-              <a
-                href={localePath(option)}
-                hrefLang={meta.htmlLang}
-                lang={meta.htmlLang}
-                aria-label={meta.name}
-                aria-current={active ? 'page' : undefined}
-                className={cn(
-                  'grid h-8 min-w-9 place-items-center rounded-full px-2 text-xs font-medium tracking-wide transition-colors duration-200',
-                  active
-                    ? 'bg-accent text-foreground'
-                    : 'text-muted-foreground hover:bg-accent hover:text-foreground'
-                )}
-              >
-                {meta.label}
-              </a>
+              <Magnetic>
+                <a
+                  href={localePath(option)}
+                  hrefLang={meta.htmlLang}
+                  lang={meta.htmlLang}
+                  aria-label={meta.name}
+                  aria-current={active ? 'page' : undefined}
+                  className={cn(
+                    'grid h-8 min-w-9 place-items-center rounded-full px-2 text-xs font-medium tracking-wide transition-colors duration-200',
+                    active
+                      ? 'bg-accent text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  )}
+                >
+                  {meta.label}
+                </a>
+              </Magnetic>
             </li>
           )
         })}

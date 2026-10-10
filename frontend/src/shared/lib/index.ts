@@ -4,6 +4,7 @@ export {
   EASE_IN_OUT,
   EASE_OUT,
   SPRING_LAYOUT,
+  SPRING_MOUSE,
   SPRING_PRESS,
   SPRING_SWAP
 } from './motion'

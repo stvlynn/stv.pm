@@ -7,6 +7,7 @@ export {
   type ImageViewerImage,
   type ImageViewerLabels
 } from './image-viewer'
+export { Magnetic } from './magnetic'
 export { Reveal } from './reveal'
 export { ScrollDrawer } from './scroll-drawer'
 export { SharedLayoutBg } from './shared-layout-bg'
