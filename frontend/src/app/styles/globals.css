@@ -36,11 +36,9 @@
   --ring: var(--corn-500);
 
   /* Artwork and brand colours that do not follow the theme. */
-  --heart: oklch(0.78 0.1 18);
-  /* Over the Pale Blue Dot photograph: night sky, ink on the dark upper sky,
-     and text on the pale band of sunlight at the bottom. */
+  /* Over the Pale Blue Dot photograph: night sky, and text on the pale band
+     of sunlight at the bottom. */
   --photo-night: #0b1520;
-  --on-photo-sky: #f5f7fb;
   --on-photo-glow: color-mix(in srgb, var(--ink-900) 72%, transparent);
   --on-photo-glow-strong: var(--ink-900);
   --tencent: #0052d9;
@@ -69,9 +67,7 @@
   --color-brand: var(--brand);
   --color-brand-muted: var(--brand-muted);
   --color-ring: var(--ring);
-  --color-heart: var(--heart);
   --color-photo-night: var(--photo-night);
-  --color-on-photo-sky: var(--on-photo-sky);
   --color-on-photo-glow: var(--on-photo-glow);
   --color-on-photo-glow-strong: var(--on-photo-glow-strong);
   --color-tencent: var(--tencent);
