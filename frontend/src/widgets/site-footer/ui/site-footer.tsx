@@ -1,5 +1,5 @@
 import { site } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { cn } from '@/shared/lib'
 
 const TONE = {
@@ -9,7 +9,16 @@ const TONE = {
   photo: 'text-on-photo-glow [&_a:hover]:text-on-photo-glow-strong'
 } as const
 
-export function SiteFooter({ year, tone = 'page' }: { year: number; tone?: keyof typeof TONE }) {
+export function SiteFooter({
+  year,
+  locale,
+  tone = 'page'
+}: {
+  year: number
+  locale: Locale
+  tone?: keyof typeof TONE
+}) {
+  const copy = getCopy(locale)
   return (
     <footer
       className={cn(

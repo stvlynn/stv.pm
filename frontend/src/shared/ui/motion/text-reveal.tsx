@@ -3,7 +3,7 @@
 
 import { motion, type Transition, useReducedMotion } from 'motion/react'
 import type { ElementType } from 'react'
-import { cn, EASE_OUT } from '@/shared/lib'
+import { cn, EASE_OUT, splitTextUnits } from '@/shared/lib'
 
 export interface TextRevealProps {
   text: string | readonly string[]
@@ -17,8 +17,13 @@ export interface TextRevealProps {
 }
 
 const SPRING = { stiffness: 140, damping: 26, mass: 1.2 }
+/** Longest time, in seconds, between the first and the last unit starting. */
+const MAX_SPREAD = 0.7
 
-/** Words rise into place with a spring while their blur clears. */
+/**
+ * Words (or CJK characters) rise into place with a spring while their blur
+ * clears.
+ */
 export function TextReveal({
   text,
   as: Comp = 'span',
@@ -30,16 +35,20 @@ export function TextReveal({
 }: TextRevealProps) {
   const reduce = useReducedMotion()
   const lines = typeof text === 'string' ? [text] : text
-  const words = lines.map((line) => line.match(/\S+\s*/g) ?? [])
-  // Index of each line's first word across all lines, so the stagger runs on.
+  const words = lines.map(splitTextUnits)
+  // Index of each line's first unit across all lines, so the stagger runs on.
   const firstIndex = words.map((_, i) => words.slice(0, i).reduce((n, line) => n + line.length, 0))
+  // Character-by-character CJK lines have many units; keep the whole reveal
+  // within the same time a short English line takes.
+  const total = words.reduce((n, line) => n + line.length, 0)
+  const step = Math.min(stagger, MAX_SPREAD / Math.max(total, 1))
 
   return (
     <Comp className={cn('block', className)}>
       {lines.map((line, lineIndex) => (
         <span key={`${lineIndex}-${line}`} className="block">
           {(words[lineIndex] ?? []).map((word, wordIndex) => {
-            const d = delay + ((firstIndex[lineIndex] ?? 0) + wordIndex) * stagger
+            const d = delay + ((firstIndex[lineIndex] ?? 0) + wordIndex) * step
             const transition: Transition = reduce
               ? { opacity: { duration: 0.25, ease: EASE_OUT, delay: d * 0.3 } }
               : {
@@ -55,7 +64,7 @@ export function TextReveal({
                 }
                 animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1, filter: 'blur(0px)' }}
                 transition={transition}
-                // `whitespace-pre` keeps each word's trailing space inside its
+                // `whitespace-pre` keeps each unit's trailing space inside its
                 // inline-block, otherwise the words run together.
                 className="inline-block whitespace-pre will-change-transform"
               >

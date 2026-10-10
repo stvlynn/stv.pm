@@ -1,3 +1,5 @@
-export { metadata, viewport } from './metadata'
-export { RootLayout } from './root-layout'
+export { buildMetadata, buildNotFoundMetadata, viewport } from './metadata'
+export { NotFoundPage } from './not-found-page'
 export { ogImageAlt, ogImageSize, renderOgImage } from './og/og-image'
+export { RootLayout } from './root-layout'
+export { localeFromParams, type LocaleParams, localeStaticParams } from './routing/locale-params'

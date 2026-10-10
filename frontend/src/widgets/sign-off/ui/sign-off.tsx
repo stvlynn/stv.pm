@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import type { CSSProperties, ReactNode } from 'react'
 import { PALE_BLUE_DOT, SIGNATURE_IMAGE } from '@/shared/assets'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { cn } from '@/shared/lib'
 import { ScrollDrawer } from '@/shared/ui/motion'
 import styles from './sign-off.module.css'
@@ -20,7 +20,8 @@ const photoVars = {
  * handwritten signature. Earth is a single point in the sunbeam below it;
  * `footer` sits on the pale band of light at the bottom.
  */
-export function SignOff({ footer }: { footer: ReactNode }) {
+export function SignOff({ footer, locale }: { footer: ReactNode; locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <figure>
       <ScrollDrawer
@@ -31,11 +32,11 @@ export function SignOff({ footer }: { footer: ReactNode }) {
                 src={image}
                 alt={copy.signOff.photoAlt}
                 fill
-                sizes="(min-aspect-ratio: 1/1) 100vw, 100vh"
-                placeholder="blur"
+                // Fetched with the page, not when the drawer nears the viewport,
+                // so the scene is ready by the time it opens.
+                loading="eager"
                 className="select-none"
               />
-              <span aria-hidden="true" className={styles.earth} />
             </div>
           </div>
         }
@@ -45,7 +46,7 @@ export function SignOff({ footer }: { footer: ReactNode }) {
             <Image
               src={SIGNATURE_IMAGE}
               alt={copy.signOff.label}
-              sizes="(min-width: 640px) 21rem, 78vw"
+              loading="eager"
               className="-ml-1 h-auto w-[min(21rem,78vw)] select-none"
             />
           </div>

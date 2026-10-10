@@ -1,13 +1,14 @@
 import { ArrowUpRight } from 'lucide-react'
 import { site, type SocialId } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { SocialIcon } from '@/shared/ui/brand'
 import { SharedLayoutBg } from '@/shared/ui/motion'
 import { Section } from '@/shared/ui/section'
 
 const ORDER: readonly SocialId[] = ['x', 'telegram', 'github', 'unsplash']
 
-export function Elsewhere() {
+export function Elsewhere({ locale }: { locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <Section id="elsewhere" title={copy.elsewhere.title}>
       <SharedLayoutBg as="ul">

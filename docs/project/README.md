@@ -8,14 +8,14 @@ This section describes the project at a high level: what it is, what it is not, 
 
 ## Project overview
 
-`stv.pm` is Steven Lynn's personal homepage. It is one page, in English:
+`stv.pm` is Steven Lynn's personal homepage. It is one page, published in English (default, at `/`), Japanese (`/ja`) and Simplified Chinese (`/zh`); an EN · JA · ZH switcher sits in the header next to the theme toggle:
 
 1. Name and a two-line introduction: building foundations for the next generation of humans and agents, on the way to AGI. Roles live under **Work**, not here.
 2. **Work** — Tencent (product manager, now) and Dify (operations, before), each with a square logo.
 3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
 4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.
 5. **Elsewhere** — X, Telegram, GitHub, Unsplash.
-6. **Sign-off** — closes the page where a call to action would sit: a drawer that opens with the scroll onto Voyager 1's *Pale Blue Dot* (NASA/JPL-Caltech, public domain). It rises as a rounded sheet, widens to full screen and pins, showing the original handwritten signature image (`shared/assets/signature.png`) as drawn. A faint halo breathes around Earth, and the footer sits on the pale band of sunlight at the bottom.
+6. **Sign-off** — closes the page where a call to action would sit: a drawer that opens with the scroll onto Voyager 1's *Pale Blue Dot* (NASA/JPL-Caltech, public domain). It rises as a rounded sheet, widens to full screen and pins, showing the original handwritten signature image (`shared/assets/signature.png`) as drawn. The photograph is shown as is, with nothing drawn over it, and the footer sits on the pale band of sunlight at the bottom.
 
 The Open Graph image (`frontend/app/opengraph-image.tsx`, rendered at build time) is a solid white vector trace of the signature over the same photograph, with no text.
 

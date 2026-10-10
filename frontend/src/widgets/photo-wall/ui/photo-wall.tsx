@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useMemo } from 'react'
 import { type Photo, photoTileSrc, photoTileSrcSet, photoViewerSrc } from '@/entities/photo'
 import { site } from '@/shared/config'
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import {
   ImageViewer,
   ImageViewerContent,
@@ -15,17 +15,13 @@ import {
 } from '@/shared/ui/motion'
 import { QuietLink, Section } from '@/shared/ui/section'
 
-const labels = {
-  gallery: copy.photos.gallery,
-  open: copy.photos.open,
-  ...copy.photos.viewer
-}
-
 /**
  * The latest Unsplash photographs as a masonry wall. A tile morphs into a
  * full-screen viewer with swipe, arrow-key and zoom controls.
  */
-export function PhotoWall({ photos }: { photos: Photo[] }) {
+export function PhotoWall({ photos, locale }: { photos: Photo[]; locale: Locale }) {
+  const copy = getCopy(locale)
+  const labels = { gallery: copy.photos.gallery, open: copy.photos.open, ...copy.photos.viewer }
   const images = useMemo<ImageViewerImage[]>(
     () =>
       photos.map((photo) => ({
@@ -38,7 +34,7 @@ export function PhotoWall({ photos }: { photos: Photo[] }) {
         height: photo.height,
         placeholder: photo.color
       })),
-    [photos]
+    [photos, copy]
   )
   const pages = useMemo(() => new Map(photos.map((photo) => [photo.id, photo.pageUrl])), [photos])
 
@@ -54,7 +50,7 @@ export function PhotoWall({ photos }: { photos: Photo[] }) {
             <Reveal key={image.id} delay={(index % 3) * 0.06} className="mb-3 break-inside-avoid">
               <ImageViewerThumbnail
                 imageId={image.id}
-                className="group block w-full cursor-zoom-in rounded-xl"
+                className="group block w-full rounded-xl"
                 imageClassName="transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
               >
                 <span

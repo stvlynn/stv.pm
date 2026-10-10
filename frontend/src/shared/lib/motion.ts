@@ -11,5 +11,8 @@ export const SPRING_PRESS = { type: 'spring', stiffness: 500, damping: 30, mass:
 /** Content swaps: icons trading places inside a control. */
 export const SPRING_SWAP = { type: 'spring', stiffness: 460, damping: 30, mass: 0.55 } as const
 
+/** Cursor-follow physics for pointer tracking (magnetic controls). */
+export const SPRING_MOUSE = { stiffness: 200, damping: 15, mass: 0.3 } as const
+
 /** Shared-layout glides: pills and frames morphing between positions. */
 export const SPRING_LAYOUT = { type: 'spring', stiffness: 360, damping: 32, mass: 0.6 } as const

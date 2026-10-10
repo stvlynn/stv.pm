@@ -1,8 +1,9 @@
-import { copy } from '@/shared/i18n'
+import { getCopy, type Locale } from '@/shared/i18n'
 import { TextReveal } from '@/shared/ui/motion'
 
 /** Name and a one-line bio; the handwritten signature closes the page instead. */
-export function Intro() {
+export function Intro({ locale }: { locale: Locale }) {
+  const copy = getCopy(locale)
   return (
     <div className="text-[1.0625rem] leading-relaxed">
       <TextReveal as="h1" text={copy.intro.name} className="font-medium" />

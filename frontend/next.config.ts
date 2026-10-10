@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: repoRoot,
   output: 'export',
   images: { unoptimized: true },
+  // The root layout lives under `[[...locale]]`, so the 404 brings its own.
+  experimental: { globalNotFound: true },
   reactStrictMode: true,
   poweredByHeader: false
 }

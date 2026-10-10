@@ -4,7 +4,7 @@ This document defines how UI is written in this project. The goal is a consisten
 
 ## Language
 
-- All user-facing copy must be in English unless the user explicitly asks for another language.
+- The site is published in English (default), Japanese and Simplified Chinese. Every user-facing string has an entry in each of `shared/i18n/en.ts`, `ja.ts` and `zh.ts`; add new keys to all three.
 - All code, comments, prop names, and CSS custom properties must be in English.
 
 ## No hardcoded strings

@@ -1,6 +1,7 @@
 /**
- * Every user-facing string on the site. Components read from here by key;
- * nothing visible is written inline in JSX.
+ * Every user-facing string on the site, in English (the default locale).
+ * Components read from a dictionary by key; nothing visible is written inline
+ * in JSX. `ja.ts` and `zh.ts` must provide the same keys (`Dictionary`).
  */
 export const en = {
   meta: {
@@ -65,5 +66,12 @@ export const en = {
   footer: {
     copyright: (year: number) => `© ${year} Steven Lynn`,
     rss: 'RSS'
+  },
+  language: {
+    label: 'Language'
+  },
+  notFound: {
+    title: 'Page not found',
+    home: 'Back to the homepage'
   }
 } as const
