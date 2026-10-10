@@ -6,17 +6,17 @@
   "type": "module",
   "scripts": {
     "dev": "next dev frontend",
-    "build": "next build frontend",
-    "start": "next start frontend",
+    "build": "node scripts/build.mjs",
+    "start": "wrangler dev --config frontend/wrangler.jsonc",
     "typecheck": "tsc -p frontend --noEmit",
     "lint": "eslint --max-warnings 0 frontend backend",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "check": "pnpm typecheck && pnpm lint && pnpm test",
-    "build:worker": "cd frontend && opennextjs-cloudflare build",
-    "deploy:worker": "cd frontend && opennextjs-cloudflare deploy",
-    "preview:worker": "cd frontend && opennextjs-cloudflare preview"
+    "build:worker": "pnpm build",
+    "deploy:worker": "wrangler deploy --config frontend/wrangler.jsonc",
+    "preview:worker": "wrangler dev --config frontend/wrangler.jsonc"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -35,7 +35,6 @@
     "tailwind-merge": "3.6.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.10",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "22.19.1",
     "@types/react": "19.2.7",

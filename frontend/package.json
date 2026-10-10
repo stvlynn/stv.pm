@@ -4,6 +4,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "cd .. && pnpm build",
-    "start": "next start"
+    "start": "cd .. && pnpm start"
   }
 }

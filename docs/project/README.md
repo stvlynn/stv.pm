@@ -23,7 +23,7 @@ The blog (repository `stvlynn/NotionNext`, theme `navyink`) links back here from
 
 - Restrained, typographic layout after https://chloemaillot.fr: one narrow column, quiet section headings, content first.
 - Purposeful motion: entrance reveals, a gliding hover pill on lists, a thumbnail-to-viewer morph, a view-transition theme switch. Everything respects `prefers-reduced-motion`.
-- Content stays current without redeploying: the page regenerates hourly from the blog and Unsplash.
+- Content is captured from the blog and Unsplash at build time. Rebuild and redeploy to publish fresh content.
 
 ## Non-goals
 

@@ -89,8 +89,8 @@ const config = [
   },
   {
     ignores: [
+      '**/out/**',
       '**/.next/**',
-      '**/.open-next/**',
       '**/.wrangler/**',
       '**/node_modules/**',
       'frontend/next-env.d.ts'

@@ -18,6 +18,5 @@ out/
 next-env.d.ts
 *.tsbuildinfo
 
-.open-next/
 .wrangler/
 .dev.vars*

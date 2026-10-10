@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   // repository root to see those files.
   turbopack: { root: repoRoot },
   outputFileTracingRoot: repoRoot,
-  output: 'standalone',
+  output: 'export',
   reactStrictMode: true,
   poweredByHeader: false
 }

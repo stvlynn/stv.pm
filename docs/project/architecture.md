@@ -7,7 +7,7 @@
 One Next.js application (`frontend/`) renders a single statically generated page. On the server it calls the DDD backend (`backend/src/`), which reads two external sources. Nothing is fetched from the browser except images.
 
 ```text
-                      build / hourly ISR
+                      build time only
 +---------------------+   loadHome()   +------------------------------+
 | frontend/app/page   | -------------> | backend/src/interfaces/web   |
 | (Next.js route)     |                | composition root             |
@@ -72,7 +72,7 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 
 - **Frontend/backend contract** — `backend/src/application/home/dto.ts`. The frontend entities re-export `PostDto` and `PhotoDto` as `Post` and `Photo` (documented exception to "entities import only from shared"). Dates cross as ISO strings.
 - **Blog contract** — the blog's JSON Feed must give every item `id`, `title`, `url` and `date_published`; NotionNext documents this in `docs/backend/interfaces.md`.
-- **Error handling** — adapters raise `UpstreamError` or `ConfigurationError`. Nothing is swallowed: a failed source fails the render. With ISR, a failed hourly regeneration keeps serving the last good page; a failed first build fails the deploy.
+- **Error handling** — adapters raise `UpstreamError` or `ConfigurationError`. Nothing is swallowed: a failed source fails the render. A failed source fails the build; the previous deployment stays online until a successful build is deployed.
 - **Copy** — every visible string lives in `frontend/src/shared/i18n/en.ts`; addresses and handles in `frontend/src/shared/config/site.ts`.
 - **Theming** — Navy Ink tokens in `frontend/src/app/styles/globals.css`, light/dark via `next-themes` (`.dark` on `<html>`).
 - **Images** — gallery images are hot-linked from Unsplash's CDN (`urls.raw` plus imgix sizing), as Unsplash's API guidelines require; links back carry `utm_source=stv.pm&utm_medium=referral`.
@@ -80,9 +80,9 @@ Import direction is enforced by ESLint (`eslint.config.mjs`): FSD layers import 
 ## Technology stack
 
 - Runtime: Node.js 20+ (`.nvmrc`), pnpm 9
-- Framework: Next.js 16 App Router with ISR (`revalidate = 3600`), React 19, TypeScript 5.9
+- Framework: Next.js 16 App Router with static export (`output: 'export'`), React 19, TypeScript 5.9
 - Styling: Tailwind CSS 4, Navy Ink tokens, Geist Sans/Mono (`geist` package, self-hosted)
 - Motion: `motion` 13; components adapted from beUI (https://beui.dev)
 - Icons: `lucide-react`, `simple-icons` (social), LobeHub marks (company logos)
 - Tests: Vitest
-- Hosting: Cloudflare Workers with OpenNext (R2 ISR cache and Durable Object queue), or Vercel (see [`../operations/deployment.md`](../operations/deployment.md))
+- Hosting: Cloudflare Workers Static Assets (no server runtime or resource bindings), or any static host (see [`../operations/deployment.md`](../operations/deployment.md))
