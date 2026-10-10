@@ -1,9 +1,9 @@
 {
-  "$schema": "../node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "stv-pm",
   "compatibility_date": "2026-10-10",
   "assets": {
-    "directory": "./out",
+    "directory": "./frontend/out",
     "not_found_handling": "404-page"
   }
 }

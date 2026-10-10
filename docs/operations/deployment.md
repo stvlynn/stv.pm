@@ -22,7 +22,7 @@ and exports HTML, CSS, JavaScript, and metadata files. Set `UNSPLASH_ACCESS_KEY`
 in the build environment or the ignored `frontend/.env.local`; never commit it.
 The key is only used during compilation and is not included in public assets.
 
-`frontend/wrangler.jsonc` uploads `frontend/out` as static assets to `stv-pm`.
+`wrangler.jsonc` uploads `frontend/out` as static assets to `stv-pm`.
 `pnpm start` or `pnpm preview:worker` previews the completed export locally.
 
 ## Content freshness
@@ -41,8 +41,11 @@ The blog feed must provide `id`, `title`, `url`, and `date_published` for each i
 | Root directory | `/` |
 | Build command | `pnpm build` |
 | Deploy command | `pnpm deploy:worker` |
-| Preview command | `pnpm exec wrangler versions upload --config frontend/wrangler.jsonc` |
+| Preview command | `pnpm exec wrangler versions upload` |
 | Build secret | `UNSPLASH_ACCESS_KEY` |
+
+The root Wrangler configuration prevents automatic framework migration to OpenNext.
+Set the build command explicitly so the export exists before deployment.
 
 Git integration is optional; the commands also support local deployments.
 

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev frontend",
     "build": "node scripts/build.mjs",
-    "start": "wrangler dev --config frontend/wrangler.jsonc",
+    "start": "wrangler dev",
     "typecheck": "tsc -p frontend --noEmit",
     "lint": "eslint --max-warnings 0 frontend backend",
     "format": "prettier --write .",
@@ -15,8 +15,8 @@
     "test": "vitest run",
     "check": "pnpm typecheck && pnpm lint && pnpm test",
     "build:worker": "pnpm build",
-    "deploy:worker": "wrangler deploy --config frontend/wrangler.jsonc",
-    "preview:worker": "wrangler dev --config frontend/wrangler.jsonc"
+    "deploy:worker": "wrangler deploy",
+    "preview:worker": "wrangler dev"
   },
   "engines": {
     "node": ">=20.0.0"
