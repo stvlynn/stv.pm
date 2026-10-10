@@ -19,7 +19,8 @@ export interface HomePageProps {
 /**
  * One narrow reading column; the photo wall alone widens to give the
  * pictures room. Sections settle in one after another on first paint, and
- * the handwritten signature closes the page.
+ * the page closes on a drawer that opens onto the Pale Blue Dot, signed by
+ * hand, with the footer inside it.
  */
 export function HomePage({ posts, photos, year }: HomePageProps) {
   return (
@@ -42,12 +43,11 @@ export function HomePage({ posts, photos, year }: HomePageProps) {
           <Reveal>
             <Elsewhere />
           </Reveal>
-          <div className="mt-20">
-            <SignOff />
-          </div>
+        </div>
+        <div className="mt-16">
+          <SignOff footer={<SiteFooter year={year} tone="photo" />} />
         </div>
       </main>
-      <SiteFooter year={year} />
     </div>
   )
 }
