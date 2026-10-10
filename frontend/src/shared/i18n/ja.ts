@@ -38,6 +38,11 @@ export const ja: Dictionary = {
       failed: '写真を読み込めませんでした。'
     }
   },
+  coffeeChat: {
+    title: 'コーヒーチャット',
+    note: 'ご都合のよい時間をお選びください。',
+    book: '日程を予約'
+  },
   elsewhere: {
     title: 'リンク',
     links: {

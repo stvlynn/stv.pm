@@ -2,6 +2,7 @@ import type { Photo } from '@/entities/photo'
 import type { Post } from '@/entities/post'
 import type { Locale } from '@/shared/i18n'
 import { Reveal } from '@/shared/ui/motion'
+import { CoffeeChat } from '@/widgets/coffee-chat'
 import { Elsewhere } from '@/widgets/elsewhere'
 import { Intro } from '@/widgets/intro'
 import { PhotoWall } from '@/widgets/photo-wall'
@@ -43,6 +44,9 @@ export function HomePage({ locale, posts, photos, year }: HomePageProps) {
         </div>
         <div className="mx-auto mt-16 w-full max-w-2xl px-5 sm:px-6">
           <Reveal>
+            <CoffeeChat locale={locale} />
+          </Reveal>
+          <Reveal className="mt-16">
             <Elsewhere locale={locale} />
           </Reveal>
         </div>

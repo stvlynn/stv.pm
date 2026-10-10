@@ -14,6 +14,8 @@ export const site = {
       handle: '@stvlynn'
     }
   },
+  /** Booking page for a coffee chat (Feishu scheduler). */
+  coffeeChat: { href: 'https://astrafoundry.feishu.cn/scheduler/723c3c81f9126023' },
   work: {
     tencent: { href: 'https://www.tencent.com/en-us/' },
     dify: { href: 'https://dify.ai' }
