@@ -10,7 +10,7 @@ This section describes the project at a high level: what it is, what it is not, 
 
 `stv.pm` is Steven Lynn's personal homepage. It is one page, in English:
 
-1. Name and a one-line bio.
+1. Name and a two-line introduction: building foundations for the next generation of humans and agents, on the way to AGI. Roles live under **Work**, not here.
 2. **Work** — Tencent (product manager, now) and Dify (operations, before), each with a square logo.
 3. **Writing** — the six latest posts from the blog at https://blog.stv.pm.
 4. **Photos** — the twelve latest photographs from https://unsplash.com/@stvlynn, with a lightbox.

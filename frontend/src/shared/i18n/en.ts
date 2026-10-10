@@ -5,11 +5,14 @@
 export const en = {
   meta: {
     title: 'Steven Lynn',
-    description: 'Product manager at Tencent. Previously in operations at Dify.'
+    description: 'Building foundations for the next generation of humans and agents.'
   },
   intro: {
     name: 'Steven Lynn',
-    bio: ['Product manager at Tencent.', 'Before that, I ran operations at Dify.']
+    bio: [
+      'Building foundations for the next generation of humans and agents.',
+      'On the way to AGI.'
+    ]
   },
   work: {
     title: 'Work',
