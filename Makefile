@@ -6,7 +6,7 @@ install: ## Install dependencies
 dev: ## Start the dev server on http://localhost:3000
 	@pnpm dev
 
-build: ## Production build (needs UNSPLASH_ACCESS_KEY and network access to the blog)
+build: ## Production build (needs UNSPLASH_ACCESS_KEY)
 	@pnpm build
 
 check: ## Typecheck, lint and test

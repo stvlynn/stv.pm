@@ -7,6 +7,6 @@ export const generateStaticParams = localeStaticParams
 
 export default async function Page({ params }: { params: Promise<LocaleParams> }) {
   const locale = localeFromParams(await params)
-  const { posts, photos } = await loadHome()
-  return <HomePage locale={locale} posts={posts} photos={photos} year={new Date().getFullYear()} />
+  const { photos } = await loadHome()
+  return <HomePage locale={locale} photos={photos} year={new Date().getFullYear()} />
 }

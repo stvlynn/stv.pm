@@ -6,7 +6,6 @@ import { ConfigurationError } from '../../domain/shared/errors'
  * access key has no default and must be provided.
  */
 export interface ContentSourceConfig {
-  blogFeedUrl: string
   unsplash: {
     apiUrl: string
     accessKey: string
@@ -15,7 +14,6 @@ export interface ContentSourceConfig {
 }
 
 const DEFAULTS = {
-  blogFeedUrl: 'https://blog.stv.pm/rss/feed.json',
   unsplashApiUrl: 'https://api.unsplash.com',
   unsplashUsername: 'stvlynn'
 } as const
@@ -31,7 +29,6 @@ export function readContentSourceConfig(
   }
 
   return {
-    blogFeedUrl: absoluteUrl('BLOG_FEED_URL', env.BLOG_FEED_URL ?? DEFAULTS.blogFeedUrl),
     unsplash: {
       apiUrl: absoluteUrl('UNSPLASH_API_URL', env.UNSPLASH_API_URL ?? DEFAULTS.unsplashApiUrl),
       accessKey,

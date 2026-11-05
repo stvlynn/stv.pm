@@ -1,10 +1,6 @@
 /** Canonical addresses and handles. Copy lives in `shared/i18n`, not here. */
 export const site = {
   url: 'https://stv.pm',
-  blogUrl: 'https://blog.stv.pm',
-  blogFeedUrl: 'https://blog.stv.pm/rss/feed.xml',
-  /** Dates on the page are shown in the owner's time zone. */
-  timeZone: 'Asia/Shanghai',
   social: {
     x: { href: 'https://x.com/stv_lynn', handle: '@stv_lynn' },
     telegram: { href: 'https://t.me/stvlynn', handle: '@stvlynn' },

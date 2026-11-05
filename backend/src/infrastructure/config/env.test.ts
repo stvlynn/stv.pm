@@ -5,7 +5,6 @@ import { readContentSourceConfig } from './env'
 describe('readContentSourceConfig', () => {
   it('uses production endpoints by default', () => {
     expect(readContentSourceConfig({ UNSPLASH_ACCESS_KEY: 'key' })).toEqual({
-      blogFeedUrl: 'https://blog.stv.pm/rss/feed.json',
       unsplash: { apiUrl: 'https://api.unsplash.com/', accessKey: 'key', username: 'stvlynn' }
     })
   })
@@ -19,7 +18,7 @@ describe('readContentSourceConfig', () => {
 
   it('rejects a relative endpoint override', () => {
     expect(() =>
-      readContentSourceConfig({ UNSPLASH_ACCESS_KEY: 'key', BLOG_FEED_URL: '/rss/feed.json' })
-    ).toThrow(/BLOG_FEED_URL/)
+      readContentSourceConfig({ UNSPLASH_ACCESS_KEY: 'key', UNSPLASH_API_URL: '/v1' })
+    ).toThrow(/UNSPLASH_API_URL/)
   })
 })

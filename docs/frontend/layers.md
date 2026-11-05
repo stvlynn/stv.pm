@@ -69,9 +69,9 @@ Next.js owns `frontend/app/` for routing, so the FSD layers live in `frontend/sr
 |-----------|------|----------|
 | `app` | `src/app/` | `RootLayout`, `ThemeProvider`, `globals.css` (Navy Ink tokens), `metadata`, Open Graph image |
 | `pages` | `src/pages/` | `home` |
-| `widgets` | `src/widgets/` | `intro`, `work`, `writing`, `photo-wall`, `coffee-chat`, `elsewhere`, `sign-off`, `site-header`, `site-footer` |
+| `widgets` | `src/widgets/` | `intro`, `work`, `photo-wall`, `coffee-chat`, `elsewhere`, `sign-off`, `site-header`, `site-footer` |
 | `features` | `src/features/` | `toggle-theme`, `switch-language` |
-| `entities` | `src/entities/` | `post`, `photo` |
+| `entities` | `src/entities/` | `photo` |
 | `shared` | `src/shared/` | `assets`, `config`, `i18n`, `lib`, `ui/{motion,brand,section}` |
 
 `frontend/app/[[...locale]]/layout.tsx` and `page.tsx` stay thin: they resolve the locale from the route params, import from `@/app` and `@/pages/home`, and `page.tsx` is the only frontend file that calls the backend. Every widget and feature takes the `locale` and reads its strings with `getCopy(locale)`. The empty `frontend/pages/` folder stops Next.js from treating `src/pages/` as the Pages Router.

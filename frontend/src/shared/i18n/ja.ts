@@ -16,10 +16,6 @@ export const ja: Dictionary = {
       dify: { name: 'Dify', role: 'オペレーション', period: '以前' }
     }
   },
-  writing: {
-    title: '執筆',
-    all: 'すべての記事'
-  },
   photos: {
     title: '写真',
     more: 'Unsplash でもっと見る',
@@ -63,8 +59,7 @@ export const ja: Dictionary = {
     toDark: 'ダークテーマに切り替え'
   },
   footer: {
-    copyright: (year: number) => `© ${year} Steven Lynn`,
-    rss: 'RSS'
+    copyright: (year: number) => `© ${year} Steven Lynn`
   },
   language: {
     label: '言語'

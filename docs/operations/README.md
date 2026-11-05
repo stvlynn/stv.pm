@@ -11,14 +11,14 @@ This section covers how the project is run, built, deployed, and monitored.
 
 - Runtime: Node.js 22+ (`.nvmrc`), pnpm 9 (`packageManager` in `package.json`).
 - Environment variables: see [`local-dev.md`](local-dev.md#environment-variables).
-- No database, cache or broker. Content comes from the blog's JSON Feed and the Unsplash API.
+- No database, cache or broker. Content comes from the Unsplash API.
 
 ## Commands
 
 ```sh
 pnpm install          # install dependencies
 pnpm dev              # dev server on http://localhost:3000
-pnpm build            # production build (fetches the blog feed and Unsplash)
+pnpm build            # production build (fetches Unsplash)
 pnpm start            # serve the production build
 pnpm check            # typecheck + lint + test (what CI runs, plus format:check)
 ```

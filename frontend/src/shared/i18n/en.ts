@@ -22,10 +22,6 @@ export const en = {
       dify: { name: 'Dify', role: 'Operations', period: 'Before' }
     }
   },
-  writing: {
-    title: 'Writing',
-    all: 'All posts'
-  },
   photos: {
     title: 'Photos',
     more: 'More on Unsplash',
@@ -69,8 +65,7 @@ export const en = {
     toDark: 'Switch to dark theme'
   },
   footer: {
-    copyright: (year: number) => `© ${year} Steven Lynn`,
-    rss: 'RSS'
+    copyright: (year: number) => `© ${year} Steven Lynn`
   },
   language: {
     label: 'Language'

@@ -1,4 +1,3 @@
-import { site } from '@/shared/config'
 import { getCopy, type Locale } from '@/shared/i18n'
 import { cn } from '@/shared/lib'
 
@@ -22,14 +21,11 @@ export function SiteFooter({
   return (
     <footer
       className={cn(
-        'mx-auto flex w-full max-w-2xl items-center justify-between px-5 pt-3 pb-8 text-sm sm:px-6',
+        'mx-auto flex w-full max-w-2xl items-center px-5 pt-3 pb-8 text-sm sm:px-6',
         TONE[tone]
       )}
     >
       <p>{copy.footer.copyright(year)}</p>
-      <a href={site.blogFeedUrl} className="transition-colors duration-200">
-        {copy.footer.rss}
-      </a>
     </footer>
   )
 }

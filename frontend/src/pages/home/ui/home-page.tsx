@@ -1,5 +1,4 @@
 import type { Photo } from '@/entities/photo'
-import type { Post } from '@/entities/post'
 import type { Locale } from '@/shared/i18n'
 import { Reveal } from '@/shared/ui/motion'
 import { CoffeeChat } from '@/widgets/coffee-chat'
@@ -10,11 +9,9 @@ import { SiteFooter } from '@/widgets/site-footer'
 import { SignOff } from '@/widgets/sign-off'
 import { SiteHeader } from '@/widgets/site-header'
 import { Work } from '@/widgets/work'
-import { Writing } from '@/widgets/writing'
 
 export interface HomePageProps {
   locale: Locale
-  posts: Post[]
   photos: Photo[]
   year: number
 }
@@ -25,7 +22,7 @@ export interface HomePageProps {
  * the page closes on a drawer that opens onto the Pale Blue Dot, signed by
  * hand, with the footer inside it.
  */
-export function HomePage({ locale, posts, photos, year }: HomePageProps) {
+export function HomePage({ locale, photos, year }: HomePageProps) {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader locale={locale} />
@@ -34,9 +31,6 @@ export function HomePage({ locale, posts, photos, year }: HomePageProps) {
           <Intro locale={locale} />
           <Reveal delay={0.3}>
             <Work locale={locale} />
-          </Reveal>
-          <Reveal delay={0.4}>
-            <Writing posts={posts} locale={locale} />
           </Reveal>
         </div>
         <div className="mx-auto mt-16 w-full max-w-4xl px-5 sm:px-6">

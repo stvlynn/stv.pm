@@ -23,7 +23,7 @@ pnpm build
 pnpm deploy:worker
 ```
 
-Each build clears Next.js' persisted fetch cache, fetches the blog JSON Feed and Unsplash photos, renders the homepage,
+Each build clears Next.js' persisted fetch cache, fetches Unsplash photos, renders the homepage,
 and exports HTML, CSS, JavaScript, and metadata files. Set `UNSPLASH_ACCESS_KEY`
 in the build environment or the ignored `frontend/.env.local`; never commit it.
 The key is only used during compilation and is not included in public assets.
@@ -34,11 +34,9 @@ The key is only used during compilation and is not included in public assets.
 ## Content freshness
 
 Content changes only when a new build is deployed. Visitors receive the
-precompiled files and do not trigger blog or Unsplash API requests. Gallery
-images continue loading directly from the Unsplash image CDN. A failed source
+precompiled files and do not trigger Unsplash API requests. Gallery
+images continue loading directly from the Unsplash image CDN. A failed fetch
 fails the build and leaves the previous deployment available.
-
-The blog feed must provide `id`, `title`, `url`, and `date_published` for each item.
 
 ## Workers Builds settings
 

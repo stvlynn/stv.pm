@@ -32,8 +32,7 @@ export function buildMetadata(locale: Locale): Metadata {
           LOCALES.map((option) => [LOCALE_META[option].htmlLang, localePath(option)])
         ),
         'x-default': localePath('en')
-      },
-      types: { 'application/rss+xml': site.blogFeedUrl }
+      }
     },
     openGraph: {
       type: 'profile',

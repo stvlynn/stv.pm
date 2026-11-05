@@ -1,7 +1,7 @@
 # stv.pm
 
 Steven Lynn's personal homepage: a handwritten signature, a short bio, work,
-the latest posts from [blog.stv.pm](https://blog.stv.pm), a photo wall from
+a photo wall from
 [Unsplash](https://unsplash.com/@stvlynn) and links elsewhere.
 
 Agents start with **`AGENTS.md`** (same file as `CLAUDE.md`).

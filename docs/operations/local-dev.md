@@ -16,7 +16,6 @@
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `UNSPLASH_ACCESS_KEY` | yes | Unsplash API access key. Missing → `ConfigurationError` and the page does not render. |
-| `BLOG_FEED_URL` | no | JSON Feed of the blog. Defaults to `https://blog.stv.pm/rss/feed.json`. |
 | `UNSPLASH_API_URL` | no | Unsplash API base. Defaults to `https://api.unsplash.com`. |
 | `UNSPLASH_USERNAME` | no | Whose photos to show. Defaults to `stvlynn`. |
 
@@ -38,4 +37,3 @@ pnpm format          # Prettier (with the Tailwind class sorter)
 ## Common issues
 
 - **`UNSPLASH_ACCESS_KEY is not set`** — the variable is not visible to `next`; see setup step 2.
-- **`[blog] expected non-empty string "date_published"`** — the blog is on a NotionNext version from before the feed contract. Deploy the blog first.

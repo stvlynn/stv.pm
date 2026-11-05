@@ -16,10 +16,6 @@ export const zh: Dictionary = {
       dify: { name: 'Dify', role: '运营', period: '此前' }
     }
   },
-  writing: {
-    title: '文章',
-    all: '全部文章'
-  },
   photos: {
     title: '摄影',
     more: '在 Unsplash 查看更多',
@@ -61,8 +57,7 @@ export const zh: Dictionary = {
     toDark: '切换到深色主题'
   },
   footer: {
-    copyright: (year: number) => `© ${year} Steven Lynn`,
-    rss: 'RSS'
+    copyright: (year: number) => `© ${year} Steven Lynn`
   },
   language: {
     label: '语言'
